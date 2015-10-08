@@ -4,4 +4,4 @@ AppVeyor: [![Build status](https://ci.appveyor.com/api/projects/status/xebjhkai0
 
 Travis: [![Build status](https://travis-ci.org/CodeComb/Extensions.svg)](https://travis-ci.org/CodeComb/Localization)
 
-An ASP.Net vNext Localization Library
+More features for ASP.Net 5
