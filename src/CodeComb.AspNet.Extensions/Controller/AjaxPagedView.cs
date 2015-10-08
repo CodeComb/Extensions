@@ -59,49 +59,5 @@ namespace Microsoft.AspNet.Mvc
                     return View(ViewPath);
             }
         }
-
-        [NonAction]
-        [Obsolete]
-        public IActionResult AjaxTemplatedPagedView<TModel>(
-            IEnumerable<TModel> Source,
-            string ContentSelector,
-            int PageSize = 50,
-            AjaxPerformanceType AjaxPerformance = AjaxPerformanceType.WaterFallFlow,
-            string PagerDomId = "pager-outer",
-            string FormSelector = "form",
-            string ViewPath = null)
-        {
-            if (!string.IsNullOrEmpty(ViewPath) && CurrentTemplate != null)
-                ViewPath = ViewPath.Replace("{template}", Cookies["_template"] ?? Template.DefaultTemplate);
-            if (Request.Query["raw"] == "info")
-            {
-                var info = Pager.GetPagerInfo(ref Source, PageSize, string.IsNullOrEmpty(Request.Query["p"]) ? 1 : Convert.ToInt32(Request.Query["p"]));
-                return Json(info);
-            }
-            else if (Request.Query["raw"] == "true")
-            {
-                Pager.PlainDivide(ref Source, PageSize, string.IsNullOrEmpty(Request.Query["p"]) ? 1 : Convert.ToInt32(Request.Query["p"]));
-                if (string.IsNullOrEmpty(ViewPath))
-                    return View("~/Views/" + (Cookies["_template"] ?? Template.DefaultTemplate) + "/" + RouteData.Values["controller"].ToString() + "/_" + ActionContext.ActionDescriptor.Name, Source);
-                else
-                {
-                    var last = ViewPath.LastIndexOf('/');
-                    var tmp = ViewPath.Substring(0, last);
-                    var tmp2 = ViewPath.Substring(last + 1, ViewPath.Length - 1 - last);
-                    return View(tmp + "/_" + tmp2, Source);
-                }
-            }
-            else
-            {
-                ViewData["__Performance"] = (int)AjaxPerformance;
-                ViewData["__PagerDomId"] = PagerDomId;
-                ViewData["__ContentSelector"] = ContentSelector;
-                ViewData["__FormSelector"] = FormSelector;
-                if (string.IsNullOrEmpty(ViewPath))
-                    return View(("~/Views/" + CurrentTemplate.Folder + "/" + ActionContext.RouteData.Values["controller"] + "/" + ActionContext.ActionDescriptor.Name));
-                else
-                    return View(ViewPath);
-            }
-        }
     }
 }

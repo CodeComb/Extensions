@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace CodeComb.AspNet.TemplateEngine
+namespace CodeComb.AspNet.Extensions.Template
 {
     public class TemplateInfo
     {
         [JsonIgnore]
-        public string Folder { get; set; }
+        public string Identifier { get; set; }
 
         public bool IsDefault { get; set; }
 

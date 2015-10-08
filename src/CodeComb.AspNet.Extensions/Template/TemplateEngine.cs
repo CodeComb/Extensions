@@ -13,9 +13,9 @@ using Microsoft.Extensions.OptionsModel;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.ViewEngines;
 
-namespace CodeComb.AspNet.TemplateEngine
+namespace CodeComb.AspNet.Extensions.Template
 {
-    public class CodeCombRazorViewEngine : IRazorViewEngine
+    public class TemplateEngine : IRazorViewEngine
     {
         private const string ViewExtension = ".cshtml";
         internal const string ControllerKey = "controller";
@@ -53,35 +53,38 @@ namespace CodeComb.AspNet.TemplateEngine
         private readonly IRazorViewFactory _viewFactory;
         private readonly IList<IViewLocationExpander> _viewLocationExpanders;
         private readonly IViewLocationCache _viewLocationCache;
+        private readonly Template _template;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RazorViewEngine" /> class.
         /// </summary>
         /// <param name="pageFactory">The page factory used for creating <see cref="IRazorPage"/> instances.</param>
-        public CodeCombRazorViewEngine(IRazorPageFactory pageFactory,
+        public TemplateEngine(IRazorPageFactory pageFactory,
                                IRazorViewFactory viewFactory,
                                IOptions<RazorViewEngineOptions> optionsAccessor,
-                               IViewLocationCache viewLocationCache)
+                               IViewLocationCache viewLocationCache,
+                               Template template)
         {
             _pageFactory = pageFactory;
             _viewFactory = viewFactory;
             _viewLocationExpanders = optionsAccessor.Value.ViewLocationExpanders;
             _viewLocationCache = viewLocationCache;
+            _template = template;
         }
 
-        public virtual IEnumerable<string> GenerateViewLocationFormats(string template)
+        public virtual IEnumerable<string> GenerateViewLocationFormats()
         {
             var ret = new List<string>();
             foreach (var x in ViewLocationFormats)
-                ret.Add(x.Replace("{template}", template));
+                ret.Add(x.Replace("{template}", _template.Current.Identifier));
             return ret;
         }
 
-        public virtual IEnumerable<string> GenerateAreaViewLocationFormats(string template)
+        public virtual IEnumerable<string> GenerateAreaViewLocationFormats()
         {
             var ret = new List<string>();
             foreach (var x in AreaViewLocationFormats)
-                ret.Add(x.Replace("{template}", template));
+                ret.Add(x.Replace("{template}", _template.Current.Identifier));
             return ret;
         }
 
@@ -101,15 +104,7 @@ namespace CodeComb.AspNet.TemplateEngine
             ActionContext context,
             string viewName)
         {
-            var templateService = context.HttpContext.ApplicationServices.GetService<Template>();
-            var template = "Default";
-            if (templateService != null)
-            {
-                template = context.HttpContext.Request.Cookies["_template"];
-                if (template == null)
-                    template = templateService.DefaultTemplate;
-            }
-            viewName = viewName.Replace("{template}", template);
+            viewName = viewName.Replace("{template}", _template.Current.Identifier);
             if (string.IsNullOrEmpty(viewName))
             {
                 throw new ArgumentException();
@@ -123,15 +118,7 @@ namespace CodeComb.AspNet.TemplateEngine
         public ViewEngineResult FindPartialView(ActionContext context,
                                                 string partialViewName)
         {
-            var templateService = context.HttpContext.ApplicationServices.GetService<Template>();
-            var template = "Default";
-            if (templateService != null)
-            {
-                template = context.HttpContext.Request.Cookies["_template"];
-                if (template == null)
-                    template = templateService.DefaultTemplate;
-            }
-            partialViewName = partialViewName.Replace("{template}", template);
+            partialViewName = partialViewName.Replace("{template}", _template.Current.Identifier);
             if (string.IsNullOrEmpty(partialViewName))
             {
                 throw new ArgumentException();
@@ -145,15 +132,7 @@ namespace CodeComb.AspNet.TemplateEngine
         public RazorPageResult FindPage(ActionContext context,
                                         string pageName)
         {
-            var templateService = context.HttpContext.ApplicationServices.GetService<Template>();
-            var template = "Default";
-            if (templateService != null)
-            {
-                template = context.HttpContext.Request.Cookies["_template"];
-                if (template == null)
-                    template = templateService.DefaultTemplate;
-            }
-            pageName = pageName.Replace("{template}", template);
+            pageName = pageName.Replace("{template}", _template.Current.Identifier);
             if (string.IsNullOrEmpty(pageName))
             {
                 throw new ArgumentException();
@@ -235,21 +214,12 @@ namespace CodeComb.AspNet.TemplateEngine
                                                             string pageName,
                                                             bool isPartial)
         {
-            var templateService = context.HttpContext.ApplicationServices.GetService<Template>();
-            var template = "Default";
-            if (templateService != null)
-            {
-                template = context.HttpContext.Request.Cookies["_template"];
-                if (template == null)
-                    template = templateService.DefaultTemplate;
-            }
-
             // Initialize the dictionary for the typical case of having controller and action tokens.
             var areaName = GetNormalizedRouteValue(context, AreaKey);
 
             // Only use the area view location formats if we have an area token.
-            var viewLocations = !string.IsNullOrEmpty(areaName) ? GenerateAreaViewLocationFormats(template) :
-                                                                  GenerateViewLocationFormats(template);
+            var viewLocations = !string.IsNullOrEmpty(areaName) ? AreaViewLocationFormats :
+                                                                  ViewLocationFormats;
 
             var expanderContext = new ViewLocationExpanderContext(context, pageName, isPartial);
             if (_viewLocationExpanders.Count > 0)

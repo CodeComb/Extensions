@@ -1,0 +1,77 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Text;
+using Microsoft.AspNet.Mvc;
+using Microsoft.AspNet.Identity;
+using System.Security.Claims;
+using Microsoft.Extensions.Internal;
+using Microsoft.AspNet.Mvc.Filters;
+using Microsoft.AspNet.Mvc.ViewFeatures;
+
+namespace Microsoft.AspNet.Mvc
+{
+    public class ClaimOrRolesAuthorizeAttribute : ActionFilterAttribute
+    {
+        private string[] claimTypes;
+        private string claimValue;
+        private string[] roles;
+        private string routeField;
+
+        public ClaimOrRolesAuthorizeAttribute(string Roles, string Types, string RouteField = "id")
+        {
+            claimTypes = Types.Split(',');
+            for (var i = 0; i < claimTypes.Count(); i++)
+                claimTypes[i] = claimTypes[i].Trim(' ');
+            routeField = RouteField;
+            roles = Roles.Split(',');
+            for (var i = 0; i < roles.Count(); i++)
+                roles[i] = roles[i].Trim(' ');
+        }
+
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            if (context.RouteData.Values[routeField] == null)
+                claimValue = null;
+            else
+                claimValue = context.RouteData.Values[routeField].ToString();
+
+            var user = context.HttpContext.User;
+            foreach (var r in roles)
+            {
+                if (user.IsInRole(r))
+                {
+                    base.OnActionExecuting(context);
+                    return;
+                }
+            }
+            if (!string.IsNullOrEmpty(claimValue))
+            {
+                foreach(var c in claimTypes)
+                {
+                    if (user.HasClaim(c, claimValue))
+                    {
+                        base.OnActionExecuting(context);
+                        return;
+                    }
+                }
+            }
+            HandleUnauthorizedRequest(context);
+        }
+
+        public virtual void HandleUnauthorizedRequest(ActionExecutingContext context)
+        {
+            var prompt = new Prompt
+            {
+                Title = "Permission Denied",
+                StatusCode = 403,
+                Details = "You must sign in with a higher power account.",
+                Requires = "ClaimsOrRoles",
+                Hint = new { Roles = roles, Claims = claimTypes }
+            };
+
+            context.Result = new ViewResult { StatusCode = 403, ViewData = new ViewDataDictionary<Prompt>(null, prompt), ViewName = "Prompt"};
+        }
+    }
+}

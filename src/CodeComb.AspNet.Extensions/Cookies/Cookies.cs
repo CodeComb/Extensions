@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Http;
 
-namespace CodeComb.vNext.Models
+namespace CodeComb.AspNet.Extensions.Cookies
 {
     public class Cookies : IDictionary<string, string>
     {

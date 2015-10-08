@@ -53,57 +53,5 @@ namespace Microsoft.AspNet.Mvc
             else
                 return View(ViewPath, ret);
         }
-
-        [NonAction]
-        [Obsolete]
-        protected IActionResult PagedTemplatedView<TView, TModel>(
-           IEnumerable<TModel> Source,
-           int PageSize = 50,
-           string ViewPath = null)
-           where TView : class
-           where TModel : IConvertible<TView>
-        {
-            int? p;
-            try
-            {
-                if (Request.Query["p"] != null)
-                {
-                    p = int.Parse(Request.Query["p"].ToString());
-                }
-                else if (RouteData.Values["p"] != null)
-                {
-                    p = int.Parse(RouteData.Values["p"].ToString());
-                }
-                else
-                {
-                    p = 1;
-                }
-            }
-            catch
-            {
-                p = 1;
-            }
-            ViewData["PagerInfo"] = Pager.Divide(ref Source, PageSize, p.Value);
-            var ret = new List<TView>();
-            foreach (var item in Source)
-            {
-                var tmp = (item as IConvertible<TView>).ToType();
-                ret.Add(tmp);
-            }
-            var template = Cookies["_template"];
-            ViewPath = ViewPath == null
-                ? ("~/Views/" + CurrentTemplate.Folder + "/" + ActionContext.RouteData.Values["controller"] + "/" + ActionContext.ActionDescriptor.Name)
-                : ViewPath.Replace("{template}", template ?? Template.DefaultTemplate);
-            if (string.IsNullOrEmpty(ViewPath))
-            {
-                return View(ret);
-            }
-            else
-            {
-                return View(ViewPath, ret);
-            }
-
-        }
-
     }
 }

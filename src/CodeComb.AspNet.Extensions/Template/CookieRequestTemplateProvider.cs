@@ -4,17 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Http;
 
-namespace CodeComb.AspNet.Extensions.TemplateEngine
+namespace CodeComb.AspNet.Extensions.Template
 {
-    public class QueryStringRequestTemplateProvider : IRequestTemplateProvider
+    public class CookieRequestTemplateProvider : IRequestTemplateProvider
     {
         public HttpContext HttpContext { get; }
 
-        public string QueryField { get; }
+        public string CookieField { get; }
 
-        public QueryStringRequestTemplateProvider(IHttpContextAccessor accessor, string queryField = "template")
+        public CookieRequestTemplateProvider(IHttpContextAccessor accessor, string cookieField = "ASPNET_TEMPLATE")
         {
-            QueryField = queryField;
+            CookieField = cookieField;
             HttpContext = accessor.HttpContext;
         }
 
@@ -22,7 +22,7 @@ namespace CodeComb.AspNet.Extensions.TemplateEngine
         {
             try
             {
-                return HttpContext.Request.Query[QueryField].ToString();
+                return HttpContext.Request.Cookies[CookieField].ToString();
             }
             catch
             {
