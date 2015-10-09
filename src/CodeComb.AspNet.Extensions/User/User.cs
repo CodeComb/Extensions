@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CodeComb.AspNet.Extensions.User
 {
-    public class User<TKey, TUser> : ClaimsPrincipal
+    public class User<TUser, TKey> : ClaimsPrincipal
         where TKey : IEquatable<TKey>
         where TUser : IdentityUser<TKey>
     {

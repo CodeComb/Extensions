@@ -54,6 +54,24 @@
           "lib/dnx451/EntityFramework.Core.dll": {}
         }
       },
+      "EntityFramework.InMemory/7.0.0-rc1-15950": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework.Core": "7.0.0-rc1-15950"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.InMemory.dll": {}
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.InMemory.dll": {}
+        }
+      },
       "EntityFramework.MicrosoftSqlServer/7.0.0-rc1-15950": {
         "type": "package",
         "dependencies": {
@@ -957,6 +975,28 @@
           "lib/dnx451/Microsoft.AspNet.Server.WebListener.dll": {}
         }
       },
+      "Microsoft.AspNet.StaticFiles/1.0.0-rc1-15721": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.FileProviders.Abstractions": "1.0.0-rc1-15682",
+          "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-15746",
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-15798",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-15675",
+          "Microsoft.Extensions.WebEncoders": "1.0.0-rc1-15798"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.AspNet.StaticFiles.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.AspNet.StaticFiles.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebUtilities/1.0.0-rc1-15798": {
         "type": "package",
         "dependencies": {
@@ -1753,6 +1793,18 @@
           "lib/dnxcore50/EntityFramework.Core.dll": {}
         }
       },
+      "EntityFramework.InMemory/7.0.0-rc1-15950": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework.Core": "7.0.0-rc1-15950"
+        },
+        "compile": {
+          "lib/dotnet/EntityFramework.InMemory.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/EntityFramework.InMemory.dll": {}
+        }
+      },
       "EntityFramework.MicrosoftSqlServer/7.0.0-rc1-15950": {
         "type": "package",
         "dependencies": {
@@ -2527,6 +2579,22 @@
         },
         "runtime": {
           "lib/dnxcore50/Microsoft.AspNet.Server.WebListener.dll": {}
+        }
+      },
+      "Microsoft.AspNet.StaticFiles/1.0.0-rc1-15721": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.FileProviders.Abstractions": "1.0.0-rc1-15682",
+          "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-15746",
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-15798",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-15675",
+          "Microsoft.Extensions.WebEncoders": "1.0.0-rc1-15798"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.AspNet.StaticFiles.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.AspNet.StaticFiles.dll": {}
         }
       },
       "Microsoft.AspNet.WebUtilities/1.0.0-rc1-15798": {
@@ -4115,6 +4183,24 @@
           "lib/dnx451/EntityFramework.Core.dll": {}
         }
       },
+      "EntityFramework.InMemory/7.0.0-rc1-15950": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework.Core": "7.0.0-rc1-15950"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.InMemory.dll": {}
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.InMemory.dll": {}
+        }
+      },
       "EntityFramework.MicrosoftSqlServer/7.0.0-rc1-15950": {
         "type": "package",
         "dependencies": {
@@ -5021,6 +5107,28 @@
           "lib/dnx451/Microsoft.AspNet.Server.WebListener.dll": {}
         }
       },
+      "Microsoft.AspNet.StaticFiles/1.0.0-rc1-15721": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.FileProviders.Abstractions": "1.0.0-rc1-15682",
+          "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-15746",
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-15798",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-15675",
+          "Microsoft.Extensions.WebEncoders": "1.0.0-rc1-15798"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.AspNet.StaticFiles.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.AspNet.StaticFiles.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebUtilities/1.0.0-rc1-15798": {
         "type": "package",
         "dependencies": {
@@ -5819,6 +5927,24 @@
         },
         "runtime": {
           "lib/dnx451/EntityFramework.Core.dll": {}
+        }
+      },
+      "EntityFramework.InMemory/7.0.0-rc1-15950": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework.Core": "7.0.0-rc1-15950"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.InMemory.dll": {}
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.InMemory.dll": {}
         }
       },
       "EntityFramework.MicrosoftSqlServer/7.0.0-rc1-15950": {
@@ -6727,6 +6853,28 @@
           "lib/dnx451/Microsoft.AspNet.Server.WebListener.dll": {}
         }
       },
+      "Microsoft.AspNet.StaticFiles/1.0.0-rc1-15721": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.FileProviders.Abstractions": "1.0.0-rc1-15682",
+          "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-15746",
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-15798",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-15675",
+          "Microsoft.Extensions.WebEncoders": "1.0.0-rc1-15798"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.AspNet.StaticFiles.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.AspNet.StaticFiles.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebUtilities/1.0.0-rc1-15798": {
         "type": "package",
         "dependencies": {
@@ -7523,6 +7671,18 @@
           "lib/dnxcore50/EntityFramework.Core.dll": {}
         }
       },
+      "EntityFramework.InMemory/7.0.0-rc1-15950": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework.Core": "7.0.0-rc1-15950"
+        },
+        "compile": {
+          "lib/dotnet/EntityFramework.InMemory.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/EntityFramework.InMemory.dll": {}
+        }
+      },
       "EntityFramework.MicrosoftSqlServer/7.0.0-rc1-15950": {
         "type": "package",
         "dependencies": {
@@ -8300,6 +8460,22 @@
         },
         "runtime": {
           "lib/dnxcore50/Microsoft.AspNet.Server.WebListener.dll": {}
+        }
+      },
+      "Microsoft.AspNet.StaticFiles/1.0.0-rc1-15721": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.FileProviders.Abstractions": "1.0.0-rc1-15682",
+          "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-15746",
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-15798",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-15675",
+          "Microsoft.Extensions.WebEncoders": "1.0.0-rc1-15798"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.AspNet.StaticFiles.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.AspNet.StaticFiles.dll": {}
         }
       },
       "Microsoft.AspNet.WebUtilities/1.0.0-rc1-15798": {
@@ -10304,6 +10480,18 @@
           "lib/dnxcore50/EntityFramework.Core.dll": {}
         }
       },
+      "EntityFramework.InMemory/7.0.0-rc1-15950": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework.Core": "7.0.0-rc1-15950"
+        },
+        "compile": {
+          "lib/dotnet/EntityFramework.InMemory.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/EntityFramework.InMemory.dll": {}
+        }
+      },
       "EntityFramework.MicrosoftSqlServer/7.0.0-rc1-15950": {
         "type": "package",
         "dependencies": {
@@ -11081,6 +11269,22 @@
         },
         "runtime": {
           "lib/dnxcore50/Microsoft.AspNet.Server.WebListener.dll": {}
+        }
+      },
+      "Microsoft.AspNet.StaticFiles/1.0.0-rc1-15721": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.FileProviders.Abstractions": "1.0.0-rc1-15682",
+          "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-15746",
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-15798",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-15675",
+          "Microsoft.Extensions.WebEncoders": "1.0.0-rc1-15798"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.AspNet.StaticFiles.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.AspNet.StaticFiles.dll": {}
         }
       },
       "Microsoft.AspNet.WebUtilities/1.0.0-rc1-15798": {
@@ -13061,6 +13265,20 @@
         "lib/net45/EntityFramework.Core.xml"
       ]
     },
+    "EntityFramework.InMemory/7.0.0-rc1-15950": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "xoO7cWAeE0sTDjGs3vZZ/1EHpZC/sBKPm46DfGGddFQ5n4RbazpMWse0SXt1nbUqdhbARC2Hva1bU4trOikaDQ==",
+      "files": [
+        "EntityFramework.InMemory.7.0.0-rc1-15950.nupkg",
+        "EntityFramework.InMemory.7.0.0-rc1-15950.nupkg.sha512",
+        "EntityFramework.InMemory.nuspec",
+        "lib/dotnet/EntityFramework.InMemory.dll",
+        "lib/dotnet/EntityFramework.InMemory.xml",
+        "lib/net45/EntityFramework.InMemory.dll",
+        "lib/net45/EntityFramework.InMemory.xml"
+      ]
+    },
     "EntityFramework.MicrosoftSqlServer/7.0.0-rc1-15950": {
       "type": "package",
       "serviceable": true,
@@ -13719,6 +13937,20 @@
         "Microsoft.AspNet.Server.WebListener.1.0.0-rc1-15729.nupkg",
         "Microsoft.AspNet.Server.WebListener.1.0.0-rc1-15729.nupkg.sha512",
         "Microsoft.AspNet.Server.WebListener.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.StaticFiles/1.0.0-rc1-15721": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "iPG+SEKB5zc8yOPczlB+PaP9zEE/I/mwiGAmD9ozfvBJD8QQMnZGPf9K5//8GQ/V7IxWafZMK1cm3jz3XpHrNw==",
+      "files": [
+        "lib/dnx451/Microsoft.AspNet.StaticFiles.dll",
+        "lib/dnx451/Microsoft.AspNet.StaticFiles.xml",
+        "lib/dnxcore50/Microsoft.AspNet.StaticFiles.dll",
+        "lib/dnxcore50/Microsoft.AspNet.StaticFiles.xml",
+        "Microsoft.AspNet.StaticFiles.1.0.0-rc1-15721.nupkg",
+        "Microsoft.AspNet.StaticFiles.1.0.0-rc1-15721.nupkg.sha512",
+        "Microsoft.AspNet.StaticFiles.nuspec"
       ]
     },
     "Microsoft.AspNet.WebUtilities/1.0.0-rc1-15798": {
@@ -17678,7 +17910,10 @@
       "CodeComb.AspNet.Extensions >= 2.0.0-*",
       "Microsoft.AspNet.Server.WebListener >= 1.0.0-*",
       "Microsoft.AspNet.Server.Kestrel >= 1.0.0-*",
-      "Microsoft.AspNet.Mvc >= 6.0.0-*"
+      "Microsoft.AspNet.Mvc >= 6.0.0-*",
+      "Microsoft.AspNet.StaticFiles >= 1.0.0-*",
+      "Microsoft.AspNet.Identity.EntityFramework >= 3.0.0-*",
+      "EntityFramework.InMemory >= 7.0.0-*"
     ],
     "DNX,Version=v4.5.1": [],
     "DNXCore,Version=v5.0": []

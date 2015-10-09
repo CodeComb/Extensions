@@ -12,9 +12,9 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class UserExtensions
     {
-        public static IServiceCollection AddUser<TKey, TUser>(this IServiceCollection self)
-            where TKey : IEquatable<TKey>
+        public static IServiceCollection AddUser<TUser, TKey>(this IServiceCollection self)
             where TUser : IdentityUser<TKey>
+            where TKey : IEquatable<TKey>
         {
             return self.AddScoped<User<TKey, TUser>>();
         }
