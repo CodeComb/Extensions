@@ -13,9 +13,10 @@ namespace CodeComb.AspNet.Extensions.Sample.Controllers
     {
         public IActionResult Index()
         {
-            //    ViewBag.Count = DB.Users.Count();
-            //    return Content(DB.Users.Count().ToString());
-            return Content(DB.Users.Count().ToString());
+            ViewBag.TemplatesCount = Template.Collection.Count;
+            ViewBag.CurrentTemplate = Template.Current.Title;
+            ViewBag.UserCount = DB.Users.Count();
+            return View();
         }
     }
 }

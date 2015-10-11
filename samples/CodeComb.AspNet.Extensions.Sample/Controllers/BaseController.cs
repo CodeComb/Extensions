@@ -7,7 +7,7 @@ using CodeComb.AspNet.Extensions.Sample.Models;
 
 namespace CodeComb.AspNet.Extensions.Sample.Controllers
 {
-    public class BaseController : BaseController<SampleContext, Models.User, string>
+    public class BaseController : BaseController<SampleContext, User, string>
     {
 
     }

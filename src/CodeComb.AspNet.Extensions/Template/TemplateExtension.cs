@@ -19,7 +19,6 @@ namespace Microsoft.Extensions.DependencyInjection
 
             return self.AddViewOptions(x =>
             {
-                x.ViewEngines.Clear();
                 foreach (var v in x.ViewEngines)
                     if (!(v is TemplateEngine))
                         x.ViewEngines.Remove(v);

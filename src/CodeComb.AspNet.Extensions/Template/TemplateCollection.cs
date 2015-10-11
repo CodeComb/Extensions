@@ -12,6 +12,8 @@ namespace CodeComb.AspNet.Extensions.Template
     {
         public List<TemplateInfo> Templates { get; private set; }
 
+        public int Count { get { return Templates.Count; } }
+
         private IApplicationEnvironment _env { get; set; }
 
         public TemplateInfo Find(string identifier)
@@ -29,6 +31,7 @@ namespace CodeComb.AspNet.Extensions.Template
         public TemplateCollection(IApplicationEnvironment env)
         {
             _env = env;
+            Refresh();
         }
 
         public void Refresh()
