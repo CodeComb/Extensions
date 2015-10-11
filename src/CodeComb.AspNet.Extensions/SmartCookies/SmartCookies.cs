@@ -5,15 +5,30 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Http;
 
-namespace CodeComb.AspNet.Extensions.Cookies
+namespace CodeComb.AspNet.Extensions.SmartCookies
 {
-    public class Cookies : IDictionary<string, string>
+    public class SmartCookies : IDictionary<string, string>
     {
         public HttpContext httpContext { get; }
 
-        public Cookies(IHttpContextAccessor accessor)
+        public SmartCookies(IHttpContextAccessor accessor)
         {
             httpContext = accessor.HttpContext;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="expires">seconds</param>
+        /// <returns></returns>
+        public string this[string key, long expires]
+        {
+            set
+            {
+                var time = DateTime.Now.AddSeconds(expires);
+                httpContext.Response.Cookies.Append(key, value, new CookieOptions { Expires = time });
+            }
         }
 
         public string this[string key]
@@ -208,11 +223,11 @@ namespace CodeComb.AspNet.Extensions.Cookies
 
     public class CookiesEnumerator : IEnumerator<KeyValuePair<string, string>>
     {
-        private Cookies cookies;
+        private SmartCookies cookies;
 
         private int position = -1;
 
-        public CookiesEnumerator(Cookies cookies)
+        public CookiesEnumerator(SmartCookies cookies)
         {
             this.cookies = cookies;
         }

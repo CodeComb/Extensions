@@ -38,7 +38,7 @@ namespace CodeComb.AspNet.Extensions.Template
             }
         }
 
-        public IRequestTemplateProvider Provider { get; }
+        public IRequestTemplateProvider Provider { get; private set; }
 
         public Template(IRequestTemplateProvider templateProvider, TemplateCollection collection)
         {

@@ -4,19 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Extensions.DependencyInjection;
+using CodeComb.AspNet.Extensions.SmartUser;
 
 namespace Microsoft.AspNet.Mvc
 {
-    public abstract class BaseController<TContext, TKey, TUser> : BaseController<TContext>
+    public abstract class BaseController<TContext, TUser, TKey> : BaseController<TContext>
     where TKey : IEquatable<TKey>
     where TUser : IdentityUser<TKey>
     {
-        public UserManager<TUser> UserManager { get; set; }
-
-        public SignInManager<TUser> SignInManager { get; set; }
-
-        public RoleManager<TUser> RoleManager { get; set; }
-
-        public TUser CurrentUser { get; set; }
+        public UserManager<TUser> UserManager { get { return Resolver?.GetService<UserManager<TUser>>(); } }
+        
+        public SignInManager<TUser> SignInManager { get { return Resolver?.GetService<SignInManager<TUser>>(); } }
+        
+        public RoleManager<TUser> RoleManager { get { return Resolver?.GetService<RoleManager<TUser>>(); } }
+        
+        public new SmartUser<TUser, TKey> User { get { return Resolver?.GetService<SmartUser<TUser, TKey>>(); } }
     }
 }

@@ -25,75 +25,84 @@ namespace CodeComb.AspNet.Extensions.Template
         {
             "/Views/{1}/{0}" + ViewExtension,
             "/Views/Shared/{0}" + ViewExtension,
-            "/Views/{template}/{1}/{0}" + ViewExtension,
-            "/Views/{template}/Shared/{0}" + ViewExtension,
             "/Templates/{1}/{0}" + ViewExtension,
             "/Templates/Shared/{0}" + ViewExtension,
-            "/Templates/{template}/{1}/{0}" + ViewExtension,
-            "/Templates/{template}/Shared/{0}" + ViewExtension,
+            "/Views/{2}/{1}/{0}" + ViewExtension,
+            "/Views/{2}/Shared/{0}" + ViewExtension,
+            "/Templates/{2}/{1}/{0}" + ViewExtension,
+            "/Templates/{2}/Shared/{0}" + ViewExtension,
         };
 
         private static readonly IEnumerable<string> _areaViewLocationFormats = new[]
         {
-            "/Areas/{2}/Views/{1}/{0}" + ViewExtension,
-            "/Areas/{2}/Views/Shared/{0}" + ViewExtension,
+            "/Areas/{3}/Views/{1}/{0}" + ViewExtension,
+            "/Areas/{3}/Views/Shared/{0}" + ViewExtension,
             "/Views/Shared/{0}" + ViewExtension,
-            "/Areas/{2}/Views/{template}/{1}/{0}" + ViewExtension,
-            "/Areas/{2}/Views/{template}/Shared/{0}" + ViewExtension,
-            "/Views/{template}/Shared/{0}" + ViewExtension,
-            "/Areas/{2}/Templates/{1}/{0}" + ViewExtension,
-            "/Areas/{2}/Templates/Shared/{0}" + ViewExtension,
+            "/Areas/{3}/Templates/{1}/{0}" + ViewExtension,
+            "/Areas/{3}/Templates/Shared/{0}" + ViewExtension,
             "/Templates/Shared/{0}" + ViewExtension,
-            "/Areas/{2}/Templates/{template}/{1}/{0}" + ViewExtension,
-            "/Areas/{2}/Templates/{template}/Shared/{0}" + ViewExtension,
-            "/Templates/{template}/Shared/{0}" + ViewExtension,
+            "/Areas/{3}/Views/{2}/{1}/{0}" + ViewExtension,
+            "/Areas/{3}/Views/{2}/Shared/{0}" + ViewExtension,
+            "/Views/{2}/Shared/{0}" + ViewExtension,
+            "/Areas/{3}/Templates/{2}/{1}/{0}" + ViewExtension,
+            "/Areas/{3}/Templates/{2}/Shared/{0}" + ViewExtension,
+            "/Templates/{2}/Shared/{0}" + ViewExtension,
         };
 
         private readonly IRazorPageFactory _pageFactory;
         private readonly IRazorViewFactory _viewFactory;
         private readonly IList<IViewLocationExpander> _viewLocationExpanders;
         private readonly IViewLocationCache _viewLocationCache;
-        private readonly Template _template;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RazorViewEngine" /> class.
+        /// Initializes a new instance of the <see cref="TemplateEngine" /> class.
         /// </summary>
         /// <param name="pageFactory">The page factory used for creating <see cref="IRazorPage"/> instances.</param>
-        public TemplateEngine(IRazorPageFactory pageFactory,
-                               IRazorViewFactory viewFactory,
-                               IOptions<RazorViewEngineOptions> optionsAccessor,
-                               IViewLocationCache viewLocationCache,
-                               Template template)
+        public TemplateEngine(
+            IRazorPageFactory pageFactory,
+            IRazorViewFactory viewFactory,
+            IOptions<RazorViewEngineOptions> optionsAccessor,
+            IViewLocationCache viewLocationCache)
         {
             _pageFactory = pageFactory;
             _viewFactory = viewFactory;
             _viewLocationExpanders = optionsAccessor.Value.ViewLocationExpanders;
             _viewLocationCache = viewLocationCache;
-            _template = template;
         }
 
-        public virtual IEnumerable<string> GenerateViewLocationFormats()
-        {
-            var ret = new List<string>();
-            foreach (var x in ViewLocationFormats)
-                ret.Add(x.Replace("{template}", _template.Current.Identifier));
-            return ret;
-        }
-
-        public virtual IEnumerable<string> GenerateAreaViewLocationFormats()
-        {
-            var ret = new List<string>();
-            foreach (var x in AreaViewLocationFormats)
-                ret.Add(x.Replace("{template}", _template.Current.Identifier));
-            return ret;
-        }
-
+        /// <summary>
+        /// Gets the locations where this instance of <see cref="TemplateEngine"/> will search for views.
+        /// </summary>
+        /// <remarks>
+        /// The locations of the views returned from controllers that do not belong to an area.
+        /// Locations are composite format strings (see http://msdn.microsoft.com/en-us/library/txafckwd.aspx),
+        /// which contains following indexes:
+        /// {0} - Action Name
+        /// {1} - Controller Name
+        /// The values for these locations are case-sensitive on case-senstive file systems.
+        /// For example, the view for the <c>Test</c> action of <c>HomeController</c> should be located at
+        /// <c>/Views/Home/Test.cshtml</c>. Locations such as <c>/views/home/test.cshtml</c> would not be discovered
+        /// </remarks>
         public virtual IEnumerable<string> ViewLocationFormats
         {
             get { return _viewLocationFormats; }
         }
 
-
+        /// <summary>
+        /// Gets the locations where this instance of <see cref="TemplateEngine"/> will search for views within an
+        /// area.
+        /// </summary>
+        /// <remarks>
+        /// The locations of the views returned from controllers that belong to an area.
+        /// Locations are composite format strings (see http://msdn.microsoft.com/en-us/library/txafckwd.aspx),
+        /// which contains following indexes:
+        /// {0} - Action Name
+        /// {1} - Controller Name
+        /// {2} - Area name
+        /// The values for these locations are case-sensitive on case-senstive file systems.
+        /// For example, the view for the <c>Test</c> action of <c>HomeController</c> should be located at
+        /// <c>/Views/Home/Test.cshtml</c>. Locations such as <c>/views/home/test.cshtml</c> would not be discovered
+        /// </remarks>
         public virtual IEnumerable<string> AreaViewLocationFormats
         {
             get { return _areaViewLocationFormats; }
@@ -104,10 +113,14 @@ namespace CodeComb.AspNet.Extensions.Template
             ActionContext context,
             string viewName)
         {
-            viewName = viewName.Replace("{template}", _template.Current.Identifier);
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
             if (string.IsNullOrEmpty(viewName))
             {
-                throw new ArgumentException();
+                throw new ArgumentException(nameof(viewName));
             }
 
             var pageResult = GetRazorPageResult(context, viewName, isPartial: false);
@@ -115,13 +128,18 @@ namespace CodeComb.AspNet.Extensions.Template
         }
 
         /// <inheritdoc />
-        public ViewEngineResult FindPartialView(ActionContext context,
-                                                string partialViewName)
+        public ViewEngineResult FindPartialView(
+            ActionContext context,
+            string partialViewName)
         {
-            partialViewName = partialViewName.Replace("{template}", _template.Current.Identifier);
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
             if (string.IsNullOrEmpty(partialViewName))
             {
-                throw new ArgumentException();
+                throw new ArgumentException(nameof(partialViewName));
             }
 
             var pageResult = GetRazorPageResult(context, partialViewName, isPartial: true);
@@ -129,20 +147,50 @@ namespace CodeComb.AspNet.Extensions.Template
         }
 
         /// <inheritdoc />
-        public RazorPageResult FindPage(ActionContext context,
-                                        string pageName)
+        public RazorPageResult FindPage(
+            ActionContext context,
+            string pageName)
         {
-            pageName = pageName.Replace("{template}", _template.Current.Identifier);
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
             if (string.IsNullOrEmpty(pageName))
             {
-                throw new ArgumentException();
+                throw new ArgumentException(nameof(pageName));
             }
 
             return GetRazorPageResult(context, pageName, isPartial: true);
         }
 
-        internal static string GetNormalizedRouteValue(ActionContext context, string key)
+        /// <summary>
+        /// Gets the case-normalized route value for the specified route <paramref name="key"/>.
+        /// </summary>
+        /// <param name="context">The <see cref="ActionContext"/>.</param>
+        /// <param name="key">The route key to lookup.</param>
+        /// <returns>The value corresponding to the key.</returns>
+        /// <remarks>
+        /// The casing of a route value in <see cref="ActionContext.RouteData"/> is determined by the client.
+        /// This making constructing paths for view locations in a case sensitive file system unreliable. Using the
+        /// <see cref="Abstractions.ActionDescriptor.RouteValueDefaults"/> for attribute routes and
+        /// <see cref="Abstractions.ActionDescriptor.RouteConstraints"/> for traditional routes to get route values
+        /// produces consistently cased results.
+        /// </remarks>
+        public static string GetNormalizedRouteValue(
+            ActionContext context,
+            string key)
         {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
             object routeValue;
             if (!context.RouteData.Values.TryGetValue(key, out routeValue))
             {
@@ -161,17 +209,24 @@ namespace CodeComb.AspNet.Extensions.Template
             }
             else
             {
-                // For traditional routes, lookup the key in RouteConstraints if the key is RequireKey.
-                var match = actionDescriptor.RouteConstraints.FirstOrDefault(
-                    constraint => string.Equals(constraint.RouteKey, key, StringComparison.OrdinalIgnoreCase));
-                if (match != null && match.KeyHandling != RouteKeyHandling.CatchAll)
+                // Perf: Avoid allocations
+                for (var i = 0; i < actionDescriptor.RouteConstraints.Count; i++)
                 {
-                    if (match.KeyHandling == RouteKeyHandling.DenyKey)
+                    var constraint = actionDescriptor.RouteConstraints[i];
+                    if (string.Equals(constraint.RouteKey, key, StringComparison.Ordinal))
                     {
-                        return null;
-                    }
+                        if (constraint.KeyHandling == RouteKeyHandling.DenyKey)
+                        {
+                            return null;
+                        }
+                        else if (constraint.KeyHandling == RouteKeyHandling.RequireKey)
+                        {
+                            normalizedValue = constraint.RouteValue;
+                        }
 
-                    normalizedValue = match.RouteValue;
+                        // Duplicate keys in RouteConstraints are not allowed.
+                        break;
+                    }
                 }
             }
 
@@ -184,9 +239,10 @@ namespace CodeComb.AspNet.Extensions.Template
             return stringRouteValue;
         }
 
-        private RazorPageResult GetRazorPageResult(ActionContext context,
-                                                   string pageName,
-                                                   bool isPartial)
+        private RazorPageResult GetRazorPageResult(
+            ActionContext context,
+            string pageName,
+            bool isPartial)
         {
             if (IsApplicationRelativePath(pageName))
             {
@@ -210,12 +266,17 @@ namespace CodeComb.AspNet.Extensions.Template
             }
         }
 
-        private RazorPageResult LocatePageFromViewLocations(ActionContext context,
-                                                            string pageName,
-                                                            bool isPartial)
+        private RazorPageResult LocatePageFromViewLocations(
+            ActionContext context,
+            string pageName,
+            bool isPartial)
         {
             // Initialize the dictionary for the typical case of having controller and action tokens.
             var areaName = GetNormalizedRouteValue(context, AreaKey);
+
+            // Get template identifier
+            var _template = context.HttpContext.RequestServices.GetService<Template>();
+            var templateIdentifier = _template.Current.Identifier;
 
             // Only use the area view location formats if we have an area token.
             var viewLocations = !string.IsNullOrEmpty(areaName) ? AreaViewLocationFormats :
@@ -227,61 +288,59 @@ namespace CodeComb.AspNet.Extensions.Template
                 expanderContext.Values = new Dictionary<string, string>(StringComparer.Ordinal);
 
                 // 1. Populate values from viewLocationExpanders.
-                foreach (var expander in _viewLocationExpanders)
+                // Perf: Avoid allocations
+                for (var i = 0; i < _viewLocationExpanders.Count; i++)
                 {
-                    expander.PopulateValues(expanderContext);
+                    _viewLocationExpanders[i].PopulateValues(expanderContext);
                 }
             }
 
             // 2. With the values that we've accumumlated so far, check if we have a cached result.
-            var pageLocation = _viewLocationCache.Get(expanderContext);
-            if (!string.IsNullOrEmpty(pageLocation.ViewLocation))
-            {
-                var page = _pageFactory.CreateInstance(pageLocation.ViewLocation);
+            IEnumerable<string> locationsToSearch = null;
 
-                if (page != null)
+            if (locationsToSearch == null)
+            {
+                // 2b. We did not find a cached location or did not find a IRazorPage at the cached location.
+                // The cached value has expired and we need to look up the page.
+                foreach (var expander in _viewLocationExpanders)
                 {
-                    // 由于多模板的机制，在这里不能使用2a的缓存机制
-                    // 2a. We found a IRazorPage at the cached location.
-                    //return new RazorPageResult(pageName, page);
+                    viewLocations = expander.ExpandViewLocations(expanderContext, viewLocations);
                 }
-            }
 
-            // 2b. We did not find a cached location or did not find a IRazorPage at the cached location.
-            // The cached value has expired and we need to look up the page.
-            foreach (var expander in _viewLocationExpanders)
-            {
-                viewLocations = expander.ExpandViewLocations(expanderContext, viewLocations);
+                var controllerName = GetNormalizedRouteValue(context, ControllerKey);
+
+                locationsToSearch = viewLocations.Select(
+                    location => string.Format(
+                        CultureInfo.InvariantCulture,
+                        location,
+                        pageName,
+                        controllerName,
+                        templateIdentifier,
+                        areaName
+                    ));
             }
 
             // 3. Use the expanded locations to look up a page.
-            var controllerName = GetNormalizedRouteValue(context, ControllerKey);
             var searchedLocations = new List<string>();
-            foreach (var path in viewLocations)
+            foreach (var path in locationsToSearch)
             {
-                var transformedPath = string.Format(CultureInfo.InvariantCulture,
-                                                    path,
-                                                    pageName,
-                                                    controllerName,
-                                                    areaName);
-                var page = _pageFactory.CreateInstance(transformedPath);
+                var page = _pageFactory.CreateInstance(path);
                 if (page != null)
                 {
-                    // 3a. We found a page. Cache the set of values that produced it and return a found result.
-                    _viewLocationCache.Set(expanderContext, new ViewLocationCacheResult(path, searchedLocations));
+                    // 3a. We found a page.
                     return new RazorPageResult(pageName, page);
                 }
-
-                searchedLocations.Add(transformedPath);
+                searchedLocations.Add(path);
             }
 
             // 3b. We did not find a page for any of the paths.
             return new RazorPageResult(pageName, searchedLocations);
         }
 
-        private ViewEngineResult CreateViewEngineResult(RazorPageResult result,
-                                                        IRazorViewFactory razorViewFactory,
-                                                        bool isPartial)
+        private ViewEngineResult CreateViewEngineResult(
+            RazorPageResult result,
+            IRazorViewFactory razorViewFactory,
+            bool isPartial)
         {
             if (result.SearchedLocations != null)
             {

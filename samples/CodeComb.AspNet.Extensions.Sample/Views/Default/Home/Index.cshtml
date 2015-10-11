@@ -1,0 +1,28 @@
+﻿<h2>CodeComb.AspNet.Extensions</h2>
+<table>
+    <tr>
+        <td>The Number of Templates</td>
+        <td>@ViewBag.TemplatesCount</td>
+    </tr>
+    <tr>
+        <td>Current Template</td>
+        <td>@ViewBag.CurrentTemplate</td>
+    </tr>
+    <tr>
+        <td>Cookies["ASPNET_TEMPLATE"]</td>
+        <td>@(Cookies["ASPNET_TEMPLATE"] ?? "null")</td>
+    </tr>
+    <tr>
+        <td>User count</td>
+        <td>@ViewBag.UserCount</td>
+    </tr>
+</table>
+
+@if (User.Current == null)
+{
+    <p>You have not signed in, click <a asp-action="Login" asp-controller="Account">here</a> to sign in, or <a asp-action="Register" asp-controller="Account">register</a> an account.</p>
+}
+else
+{
+    <p>Hi, @User.Current.UserName</p>
+}

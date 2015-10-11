@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CodeComb.AspNet.Extensions.Cookies;
+using CodeComb.AspNet.Extensions.SmartCookies;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -10,7 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddSmartCookies(this IServiceCollection self)
         {
-            return self.AddScoped<Cookies>();
+            return self.AddScoped<SmartCookies>();
         }
     }
 }

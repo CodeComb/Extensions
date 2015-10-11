@@ -9,10 +9,5 @@ namespace Microsoft.AspNet.Mvc
     {
         [FromServices]
         public virtual TContext DB { get; set; }
-
-        public override void Prepare()
-        {
-            base.Prepare();
-        }
     }
 }

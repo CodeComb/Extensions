@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.EntityFramework;
+using CodeComb.AspNet.Extensions.SmartUser;
 
 namespace System.Security.Claims
 {
-    public static class ClaimPrincipleExtensions
+    public static class SmartUserClaimsExtensions
     {
-        public static bool AnyRoles(this ClaimsPrincipal self, string Roles)
+        public static bool AnyRoles<TUser, TKey>(this SmartUser<TUser, TKey> self, string Roles)
+            where TKey : IEquatable<TKey>
+            where TUser : IdentityUser<TKey>
         {
             var roles = Roles.Split(',');
             for (var i = 0; i < roles.Count(); i++)
@@ -18,7 +22,9 @@ namespace System.Security.Claims
             return false;
         }
 
-        public static bool AnyRolesOrClaims(this ClaimsPrincipal self, string Roles, List<Claim> Claims)
+        public static bool AnyRolesOrClaims<TUser, TKey>(this SmartUser<TUser, TKey> self, string Roles, List<Claim> Claims)
+            where TKey : IEquatable<TKey>
+            where TUser : IdentityUser<TKey>
         {
             var roles = Roles.Split(',');
             for (var i = 0; i < roles.Count(); i++)
@@ -34,7 +40,9 @@ namespace System.Security.Claims
             return false;
         }
 
-        public static bool AnyRolesOrClaims(this ClaimsPrincipal self, string Roles, string Types, string Value)
+        public static bool AnyRolesOrClaims<TUser, TKey>(this SmartUser<TUser, TKey> self, string Roles, string Types, string Value)
+            where TKey : IEquatable<TKey>
+            where TUser : IdentityUser<TKey>
         {
             var tmp = Types.Split(',');
             var claims = new List<Claim>();
