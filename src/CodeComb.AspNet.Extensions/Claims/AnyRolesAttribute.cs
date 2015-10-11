@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Internal;
+﻿using System.Linq;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNet.Mvc.Filters;
 using Microsoft.AspNet.Mvc.ViewFeatures;
+using Microsoft.AspNet.Mvc.ModelBinding;
+using Microsoft.AspNet.Http;
 
 namespace Microsoft.AspNet.Mvc
 {
@@ -39,8 +38,14 @@ namespace Microsoft.AspNet.Mvc
                 Requires = "Roles",
                 Hint = roles
             };
-
-            context.Result = new ViewResult { StatusCode = 403, ViewData = new ViewDataDictionary<Prompt>(null, prompt), ViewName = "Prompt" };
+            var services = context.HttpContext.ApplicationServices;
+            context.Result = new ViewResult
+            {
+                StatusCode = prompt.StatusCode,
+                TempData = new TempDataDictionary(services.GetRequiredService<IHttpContextAccessor>(), services.GetRequiredService<ITempDataProvider>()),
+                ViewName = "Prompt",
+                ViewData = new ViewDataDictionary(new EmptyModelMetadataProvider(), context.ModelState) { Model = prompt }
+            };
         }
     }
 }

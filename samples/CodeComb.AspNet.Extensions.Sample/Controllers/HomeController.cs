@@ -18,5 +18,17 @@ namespace CodeComb.AspNet.Extensions.Sample.Controllers
             ViewBag.UserCount = DB.Users.Count();
             return View();
         }
+
+        public IActionResult SetTemplate(string identifier, [FromHeader]string Referer)
+        {
+            Cookies["ASPNET_TEMPLATE"] = "default";
+            return Redirect(Referer ?? "/");
+        }
+
+        [AnyRoles("Root, Master")]
+        public IActionResult Test()
+        {
+            return Content("You are able to access this action.");
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace CodeComb.AspNet.Extensions.Sample.Controllers
                     Title = "Login failed",
                     Details = "Please check your username or password.",
                     StatusCode = 403,
-                    RedirectUrl = Url.Link("default", new { controller = "Home", action = "Index" }),
+                    RedirectUrl = Url.Link("default", new { controller = "Login", action = "Account" }),
                     RedirectText = "Retry"
                 });
         }

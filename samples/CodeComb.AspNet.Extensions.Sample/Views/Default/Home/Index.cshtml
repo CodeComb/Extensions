@@ -9,6 +9,10 @@
         <td>@ViewBag.CurrentTemplate</td>
     </tr>
     <tr>
+        <td>Cookies["ASPNET_TEMPLATE"]</td>
+        <td>@(Cookies["ASPNET_TEMPLATE"] ?? "null")</td>
+    </tr>
+    <tr>
         <td>User count</td>
         <td>@ViewBag.UserCount</td>
     </tr>

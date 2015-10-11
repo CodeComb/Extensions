@@ -8,7 +8,7 @@ namespace Microsoft.AspNet.Mvc
     public class Prompt
     {
         public string Title { get; set; }
-        public int StatusCode { get; set; }
+        public int StatusCode { get; set; } = 200;
         public string Details { get; set; }
         public string RedirectUrl { get; set; }
         public string RedirectText { get; set; }
