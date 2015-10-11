@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Extensions.DependencyInjection;
-using CodeComb.AspNet.Extensions.User;
+using CodeComb.AspNet.Extensions.SmartUser;
 
 namespace Microsoft.AspNet.Mvc
 {
@@ -19,6 +19,6 @@ namespace Microsoft.AspNet.Mvc
         
         public RoleManager<TUser> RoleManager { get { return Resolver?.GetService<RoleManager<TUser>>(); } }
         
-        public new User<TUser, TKey> User { get { return Resolver?.GetService<User<TUser, TKey>>(); } }
+        public new SmartUser<TUser, TKey> User { get { return Resolver?.GetService<SmartUser<TUser, TKey>>(); } }
     }
 }

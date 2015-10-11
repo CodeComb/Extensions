@@ -8,9 +8,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CodeComb.AspNet.Extensions.User
+namespace CodeComb.AspNet.Extensions.SmartUser
 {
-    public class User<TUser, TKey> : ClaimsPrincipal
+    public class SmartUser<TUser, TKey> : ClaimsPrincipal
         where TKey : IEquatable<TKey>
         where TUser : IdentityUser<TKey>
     {
@@ -48,7 +48,7 @@ namespace CodeComb.AspNet.Extensions.User
             }
         }
 
-        public User(IHttpContextAccessor accessor, UserManager<TUser> userManager)
+        public SmartUser(IHttpContextAccessor accessor, UserManager<TUser> userManager)
         {
             HttpContext = accessor.HttpContext;
             Manager = userManager;

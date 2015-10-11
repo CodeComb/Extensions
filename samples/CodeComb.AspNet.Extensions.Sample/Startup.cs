@@ -43,7 +43,7 @@ namespace CodeComb.AspNet.Extensions.Sample
                 .AddTemplate()
                 .AddCookieTemplateProvider();
 
-            services.AddUser<Models.User, string>();
+            services.AddSmartUser<User, string>();
         }
 
         public async void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
