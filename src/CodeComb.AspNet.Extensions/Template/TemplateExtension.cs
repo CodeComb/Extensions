@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Http;
+using Microsoft.AspNet.Mvc.Razor;
 using CodeComb.AspNet.Extensions.Template;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -13,10 +14,12 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             self.Services
                 .AddSingleton<TemplateCollection>()
+                .AddSingleton<IRazorViewEngine, TemplateEngine>()
                 .AddScoped<Template>();
 
             return self.AddViewOptions(x =>
             {
+                x.ViewEngines.Clear();
                 foreach (var v in x.ViewEngines)
                     if (!(v is TemplateEngine))
                         x.ViewEngines.Remove(v);

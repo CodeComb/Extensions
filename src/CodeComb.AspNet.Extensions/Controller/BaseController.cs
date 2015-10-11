@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNet.Mvc.Filters;
 
 namespace Microsoft.AspNet.Mvc
 {
     public abstract partial class BaseController : Controller
     {
-        [FromServices]
-        public IConfiguration Configuration { get; set; }
-
-        [FromServices]
-        public CodeComb.AspNet.Extensions.Cookies.Cookies Cookies { get; set; }
-
-        [FromServices]
-        public CodeComb.AspNet.Extensions.Template.Template Template { get; set; }
+        public IConfiguration Configuration { get { return Resolver?.GetService<IConfiguration>(); } }
+        
+        public CodeComb.AspNet.Extensions.Cookies.Cookies Cookies { get { return Resolver?.GetService<CodeComb.AspNet.Extensions.Cookies.Cookies>(); } }
+        
+        public CodeComb.AspNet.Extensions.Template.Template Template { get { return Resolver?.GetService<CodeComb.AspNet.Extensions.Template.Template>(); } }
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {

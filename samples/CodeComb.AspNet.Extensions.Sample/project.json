@@ -9,7 +9,10 @@
     "Microsoft.AspNet.Mvc": "6.0.0-*",
     "Microsoft.AspNet.StaticFiles": "1.0.0-*",
     "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-*",
-    "EntityFramework.InMemory": "7.0.0-*"
+    "EntityFramework.InMemory": "7.0.0-*",
+    "Microsoft.Extensions.Logging": "1.0.0-*",
+    "Microsoft.Extensions.Logging.Console": "1.0.0-*",
+    "Microsoft.Extensions.Logging.Debug" : "1.0.0-*"
   },
 
   "commands": {

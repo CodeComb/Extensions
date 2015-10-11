@@ -17,15 +17,21 @@
         "framework": "DNX,Version=v4.5.1",
         "dependencies": {
           "CodeComb.AspNet.Extensions": "2.0.0",
+          "EntityFramework.InMemory": "7.0.0",
+          "Microsoft.AspNet.Identity.EntityFramework": "3.0.0",
           "Microsoft.AspNet.Mvc": "6.0.0",
           "Microsoft.AspNet.Server.Kestrel": "1.0.0",
-          "Microsoft.AspNet.Server.WebListener": "1.0.0"
+          "Microsoft.AspNet.Server.WebListener": "1.0.0",
+          "Microsoft.AspNet.StaticFiles": "1.0.0",
+          "Microsoft.Extensions.Logging": "1.0.0",
+          "Microsoft.Extensions.Logging.Console": "1.0.0",
+          "Microsoft.Extensions.Logging.Debug": "1.0.0"
         }
       },
-      "CodeComb.TestFixture/2.0.0-t151008123656": {
+      "CodeComb.TestFixture/2.0.0-t151010113444": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.Mvc.Formatters.Xml": "6.0.0-rc1-16032",
+          "Microsoft.AspNet.Mvc.Formatters.Xml": "6.0.0-rc1-16034",
           "Microsoft.AspNet.TestHost": "1.0.0-rc1-15746",
           "Microsoft.AspNet.Testing": "1.0.0-rc1-15716",
           "Microsoft.Extensions.Logging.Testing": "1.0.0-rc1-15716",
@@ -44,11 +50,11 @@
           "lib/dnx451/CodeComb.TestFixture.dll": {}
         }
       },
-      "CodeComb.TestFixture.Mvc/2.0.0-t151008123656": {
+      "CodeComb.TestFixture.Mvc/2.0.0-t151010113444": {
         "type": "package",
         "dependencies": {
-          "CodeComb.TestFixture": "2.0.0-t151008123656",
-          "Microsoft.AspNet.Identity": "3.0.0-rc1-15868",
+          "CodeComb.TestFixture": "2.0.0-t151010113444",
+          "Microsoft.AspNet.Identity": "3.0.0-rc1-15870",
           "Moq": "4.2.1507.118"
         },
         "frameworkAssemblies": [
@@ -104,6 +110,24 @@
         },
         "runtime": {
           "lib/dnx451/EntityFramework.Core.dll": {}
+        }
+      },
+      "EntityFramework.InMemory/7.0.0-rc1-15950": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework.Core": "7.0.0-rc1-15950"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.InMemory.dll": {}
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.InMemory.dll": {}
         }
       },
       "EntityFramework.MicrosoftSqlServer/7.0.0-rc1-15950": {
@@ -784,10 +808,10 @@
           "lib/dnx451/Microsoft.AspNet.Mvc.Formatters.Json.dll": {}
         }
       },
-      "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16032": {
+      "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16034": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.Mvc.Core": "6.0.0-rc1-16032"
+          "Microsoft.AspNet.Mvc.Core": "6.0.0-rc1-16034"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -1027,6 +1051,28 @@
         },
         "runtime": {
           "lib/dnx451/Microsoft.AspNet.Server.WebListener.dll": {}
+        }
+      },
+      "Microsoft.AspNet.StaticFiles/1.0.0-rc1-15721": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.FileProviders.Abstractions": "1.0.0-rc1-15682",
+          "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-15746",
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-15798",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-15675",
+          "Microsoft.Extensions.WebEncoders": "1.0.0-rc1-15798"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.AspNet.StaticFiles.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.AspNet.StaticFiles.dll": {}
         }
       },
       "Microsoft.AspNet.TestHost/1.0.0-rc1-15746": {
@@ -1512,6 +1558,42 @@
         },
         "runtime": {
           "lib/dnx451/Microsoft.Extensions.Logging.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Console/1.0.0-rc1-15675": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-15675"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Extensions.Logging.Console.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Extensions.Logging.Console.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Debug/1.0.0-rc1-15675": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-15675"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Extensions.Logging.Debug.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Extensions.Logging.Debug.dll": {}
         }
       },
       "Microsoft.Extensions.Logging.Testing/1.0.0-rc1-15716": {
@@ -1997,15 +2079,21 @@
         "framework": "DNX,Version=v4.5.1",
         "dependencies": {
           "CodeComb.AspNet.Extensions": "2.0.0",
+          "EntityFramework.InMemory": "7.0.0",
+          "Microsoft.AspNet.Identity.EntityFramework": "3.0.0",
           "Microsoft.AspNet.Mvc": "6.0.0",
           "Microsoft.AspNet.Server.Kestrel": "1.0.0",
-          "Microsoft.AspNet.Server.WebListener": "1.0.0"
+          "Microsoft.AspNet.Server.WebListener": "1.0.0",
+          "Microsoft.AspNet.StaticFiles": "1.0.0",
+          "Microsoft.Extensions.Logging": "1.0.0",
+          "Microsoft.Extensions.Logging.Console": "1.0.0",
+          "Microsoft.Extensions.Logging.Debug": "1.0.0"
         }
       },
-      "CodeComb.TestFixture/2.0.0-t151008123656": {
+      "CodeComb.TestFixture/2.0.0-t151010113444": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.Mvc.Formatters.Xml": "6.0.0-rc1-16032",
+          "Microsoft.AspNet.Mvc.Formatters.Xml": "6.0.0-rc1-16034",
           "Microsoft.AspNet.TestHost": "1.0.0-rc1-15746",
           "Microsoft.AspNet.Testing": "1.0.0-rc1-15716",
           "Microsoft.Extensions.Logging.Testing": "1.0.0-rc1-15716",
@@ -2024,11 +2112,11 @@
           "lib/dnx451/CodeComb.TestFixture.dll": {}
         }
       },
-      "CodeComb.TestFixture.Mvc/2.0.0-t151008123656": {
+      "CodeComb.TestFixture.Mvc/2.0.0-t151010113444": {
         "type": "package",
         "dependencies": {
-          "CodeComb.TestFixture": "2.0.0-t151008123656",
-          "Microsoft.AspNet.Identity": "3.0.0-rc1-15868",
+          "CodeComb.TestFixture": "2.0.0-t151010113444",
+          "Microsoft.AspNet.Identity": "3.0.0-rc1-15870",
           "Moq": "4.2.1507.118"
         },
         "frameworkAssemblies": [
@@ -2084,6 +2172,24 @@
         },
         "runtime": {
           "lib/dnx451/EntityFramework.Core.dll": {}
+        }
+      },
+      "EntityFramework.InMemory/7.0.0-rc1-15950": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework.Core": "7.0.0-rc1-15950"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.InMemory.dll": {}
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.InMemory.dll": {}
         }
       },
       "EntityFramework.MicrosoftSqlServer/7.0.0-rc1-15950": {
@@ -2764,10 +2870,10 @@
           "lib/dnx451/Microsoft.AspNet.Mvc.Formatters.Json.dll": {}
         }
       },
-      "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16032": {
+      "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16034": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.Mvc.Core": "6.0.0-rc1-16032"
+          "Microsoft.AspNet.Mvc.Core": "6.0.0-rc1-16034"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -3010,6 +3116,28 @@
         },
         "runtime": {
           "lib/dnx451/Microsoft.AspNet.Server.WebListener.dll": {}
+        }
+      },
+      "Microsoft.AspNet.StaticFiles/1.0.0-rc1-15721": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.FileProviders.Abstractions": "1.0.0-rc1-15682",
+          "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-15746",
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-15798",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-15675",
+          "Microsoft.Extensions.WebEncoders": "1.0.0-rc1-15798"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.AspNet.StaticFiles.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.AspNet.StaticFiles.dll": {}
         }
       },
       "Microsoft.AspNet.TestHost/1.0.0-rc1-15746": {
@@ -3495,6 +3623,42 @@
         },
         "runtime": {
           "lib/dnx451/Microsoft.Extensions.Logging.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Console/1.0.0-rc1-15675": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-15675"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Extensions.Logging.Console.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Extensions.Logging.Console.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Debug/1.0.0-rc1-15675": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-15675"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Extensions.Logging.Debug.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Extensions.Logging.Debug.dll": {}
         }
       },
       "Microsoft.Extensions.Logging.Testing/1.0.0-rc1-15716": {
@@ -3980,15 +4144,21 @@
         "framework": "DNX,Version=v4.5.1",
         "dependencies": {
           "CodeComb.AspNet.Extensions": "2.0.0",
+          "EntityFramework.InMemory": "7.0.0",
+          "Microsoft.AspNet.Identity.EntityFramework": "3.0.0",
           "Microsoft.AspNet.Mvc": "6.0.0",
           "Microsoft.AspNet.Server.Kestrel": "1.0.0",
-          "Microsoft.AspNet.Server.WebListener": "1.0.0"
+          "Microsoft.AspNet.Server.WebListener": "1.0.0",
+          "Microsoft.AspNet.StaticFiles": "1.0.0",
+          "Microsoft.Extensions.Logging": "1.0.0",
+          "Microsoft.Extensions.Logging.Console": "1.0.0",
+          "Microsoft.Extensions.Logging.Debug": "1.0.0"
         }
       },
-      "CodeComb.TestFixture/2.0.0-t151008123656": {
+      "CodeComb.TestFixture/2.0.0-t151010113444": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.Mvc.Formatters.Xml": "6.0.0-rc1-16032",
+          "Microsoft.AspNet.Mvc.Formatters.Xml": "6.0.0-rc1-16034",
           "Microsoft.AspNet.TestHost": "1.0.0-rc1-15746",
           "Microsoft.AspNet.Testing": "1.0.0-rc1-15716",
           "Microsoft.Extensions.Logging.Testing": "1.0.0-rc1-15716",
@@ -4007,11 +4177,11 @@
           "lib/dnx451/CodeComb.TestFixture.dll": {}
         }
       },
-      "CodeComb.TestFixture.Mvc/2.0.0-t151008123656": {
+      "CodeComb.TestFixture.Mvc/2.0.0-t151010113444": {
         "type": "package",
         "dependencies": {
-          "CodeComb.TestFixture": "2.0.0-t151008123656",
-          "Microsoft.AspNet.Identity": "3.0.0-rc1-15868",
+          "CodeComb.TestFixture": "2.0.0-t151010113444",
+          "Microsoft.AspNet.Identity": "3.0.0-rc1-15870",
           "Moq": "4.2.1507.118"
         },
         "frameworkAssemblies": [
@@ -4067,6 +4237,24 @@
         },
         "runtime": {
           "lib/dnx451/EntityFramework.Core.dll": {}
+        }
+      },
+      "EntityFramework.InMemory/7.0.0-rc1-15950": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework.Core": "7.0.0-rc1-15950"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.InMemory.dll": {}
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.InMemory.dll": {}
         }
       },
       "EntityFramework.MicrosoftSqlServer/7.0.0-rc1-15950": {
@@ -4747,10 +4935,10 @@
           "lib/dnx451/Microsoft.AspNet.Mvc.Formatters.Json.dll": {}
         }
       },
-      "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16032": {
+      "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16034": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.Mvc.Core": "6.0.0-rc1-16032"
+          "Microsoft.AspNet.Mvc.Core": "6.0.0-rc1-16034"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -4993,6 +5181,28 @@
         },
         "runtime": {
           "lib/dnx451/Microsoft.AspNet.Server.WebListener.dll": {}
+        }
+      },
+      "Microsoft.AspNet.StaticFiles/1.0.0-rc1-15721": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.FileProviders.Abstractions": "1.0.0-rc1-15682",
+          "Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-15746",
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-15798",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-15675",
+          "Microsoft.Extensions.WebEncoders": "1.0.0-rc1-15798"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.AspNet.StaticFiles.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.AspNet.StaticFiles.dll": {}
         }
       },
       "Microsoft.AspNet.TestHost/1.0.0-rc1-15746": {
@@ -5480,6 +5690,42 @@
           "lib/dnx451/Microsoft.Extensions.Logging.Abstractions.dll": {}
         }
       },
+      "Microsoft.Extensions.Logging.Console/1.0.0-rc1-15675": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-15675"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Extensions.Logging.Console.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Extensions.Logging.Console.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Debug/1.0.0-rc1-15675": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-15675"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Extensions.Logging.Debug.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Extensions.Logging.Debug.dll": {}
+        }
+      },
       "Microsoft.Extensions.Logging.Testing/1.0.0-rc1-15716": {
         "type": "package",
         "dependencies": {
@@ -5958,12 +6204,12 @@
       "type": "project",
       "path": "../../samples/CodeComb.AspNet.Extensions.Sample/project.json"
     },
-    "CodeComb.TestFixture/2.0.0-t151008123656": {
+    "CodeComb.TestFixture/2.0.0-t151010113444": {
       "type": "package",
-      "sha512": "rfvVpZwD1jfXs/gVYtDYd4aihw62naDmxaHqm03VsAXP0gsJHT2R9vkPYA8c3x03W+oLTztpaWQMD4gs36B9GA==",
+      "sha512": "n8OfqAzLtKoFdmfFyc4Aw4qOaVWt0RhgEKpz0yas5ETPxaOvZjK/FJS51iBuJYoYtmtGBoTsnCK/ze5rqd2xAw==",
       "files": [
-        "CodeComb.TestFixture.2.0.0-t151008123656.nupkg",
-        "CodeComb.TestFixture.2.0.0-t151008123656.nupkg.sha512",
+        "CodeComb.TestFixture.2.0.0-t151010113444.nupkg",
+        "CodeComb.TestFixture.2.0.0-t151010113444.nupkg.sha512",
         "CodeComb.TestFixture.nuspec",
         "lib/dnx451/CodeComb.TestFixture.dll",
         "lib/dnx451/CodeComb.TestFixture.xml",
@@ -5971,12 +6217,12 @@
         "lib/dnxcore50/CodeComb.TestFixture.xml"
       ]
     },
-    "CodeComb.TestFixture.Mvc/2.0.0-t151008123656": {
+    "CodeComb.TestFixture.Mvc/2.0.0-t151010113444": {
       "type": "package",
-      "sha512": "oLsmXYDBg6UY0+YBnbPDwzi8IBYa8YzjsVXkjwgbwzlmMHuDv4gkblAdNZ4v7hb/O+4mvJS1rR2OBALfXQ0ZlQ==",
+      "sha512": "O7hbtgN2CzkgQR8tIh0Z5FA++pZyB6Hz6kriorD+FId1ruuKyT0PIMiP9JAnHrPoEfMwCROYQrG0ZoZUmMppPQ==",
       "files": [
-        "CodeComb.TestFixture.Mvc.2.0.0-t151008123656.nupkg",
-        "CodeComb.TestFixture.Mvc.2.0.0-t151008123656.nupkg.sha512",
+        "CodeComb.TestFixture.Mvc.2.0.0-t151010113444.nupkg",
+        "CodeComb.TestFixture.Mvc.2.0.0-t151010113444.nupkg.sha512",
         "CodeComb.TestFixture.Mvc.nuspec",
         "lib/dnx451/CodeComb.TestFixture.Mvc.dll",
         "lib/dnx451/CodeComb.TestFixture.Mvc.xml"
@@ -5998,6 +6244,20 @@
         "lib/dotnet/EntityFramework.Core.xml",
         "lib/net45/EntityFramework.Core.dll",
         "lib/net45/EntityFramework.Core.xml"
+      ]
+    },
+    "EntityFramework.InMemory/7.0.0-rc1-15950": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "xoO7cWAeE0sTDjGs3vZZ/1EHpZC/sBKPm46DfGGddFQ5n4RbazpMWse0SXt1nbUqdhbARC2Hva1bU4trOikaDQ==",
+      "files": [
+        "EntityFramework.InMemory.7.0.0-rc1-15950.nupkg",
+        "EntityFramework.InMemory.7.0.0-rc1-15950.nupkg.sha512",
+        "EntityFramework.InMemory.nuspec",
+        "lib/dotnet/EntityFramework.InMemory.dll",
+        "lib/dotnet/EntityFramework.InMemory.xml",
+        "lib/net45/EntityFramework.InMemory.dll",
+        "lib/net45/EntityFramework.InMemory.xml"
       ]
     },
     "EntityFramework.MicrosoftSqlServer/7.0.0-rc1-15950": {
@@ -6495,17 +6755,17 @@
         "Microsoft.AspNet.Mvc.Formatters.Json.nuspec"
       ]
     },
-    "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16032": {
+    "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16034": {
       "type": "package",
       "serviceable": true,
-      "sha512": "cPYskR4uCOsIBGoxtn6R5X2YS//UCUnEarT0m1YvgH5tBQD7YbbGlmqeeHHWzyY7pX7INarVr42GNylqDVBKPA==",
+      "sha512": "rktbeUYqOspYf9h+vgOMwpBai2AZEexC5/z4zjedrjMTcwlgZk+8jDKUI75hp2KF9FugMYLc1ggFVooQq0yyBA==",
       "files": [
         "lib/dnx451/Microsoft.AspNet.Mvc.Formatters.Xml.dll",
         "lib/dnx451/Microsoft.AspNet.Mvc.Formatters.Xml.xml",
         "lib/dnxcore50/Microsoft.AspNet.Mvc.Formatters.Xml.dll",
         "lib/dnxcore50/Microsoft.AspNet.Mvc.Formatters.Xml.xml",
-        "Microsoft.AspNet.Mvc.Formatters.Xml.6.0.0-rc1-16032.nupkg",
-        "Microsoft.AspNet.Mvc.Formatters.Xml.6.0.0-rc1-16032.nupkg.sha512",
+        "Microsoft.AspNet.Mvc.Formatters.Xml.6.0.0-rc1-16034.nupkg",
+        "Microsoft.AspNet.Mvc.Formatters.Xml.6.0.0-rc1-16034.nupkg.sha512",
         "Microsoft.AspNet.Mvc.Formatters.Xml.nuspec"
       ]
     },
@@ -6672,6 +6932,20 @@
         "Microsoft.AspNet.Server.WebListener.1.0.0-rc1-15729.nupkg",
         "Microsoft.AspNet.Server.WebListener.1.0.0-rc1-15729.nupkg.sha512",
         "Microsoft.AspNet.Server.WebListener.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.StaticFiles/1.0.0-rc1-15721": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "iPG+SEKB5zc8yOPczlB+PaP9zEE/I/mwiGAmD9ozfvBJD8QQMnZGPf9K5//8GQ/V7IxWafZMK1cm3jz3XpHrNw==",
+      "files": [
+        "lib/dnx451/Microsoft.AspNet.StaticFiles.dll",
+        "lib/dnx451/Microsoft.AspNet.StaticFiles.xml",
+        "lib/dnxcore50/Microsoft.AspNet.StaticFiles.dll",
+        "lib/dnxcore50/Microsoft.AspNet.StaticFiles.xml",
+        "Microsoft.AspNet.StaticFiles.1.0.0-rc1-15721.nupkg",
+        "Microsoft.AspNet.StaticFiles.1.0.0-rc1-15721.nupkg.sha512",
+        "Microsoft.AspNet.StaticFiles.nuspec"
       ]
     },
     "Microsoft.AspNet.TestHost/1.0.0-rc1-15746": {
@@ -7115,6 +7389,42 @@
         "Microsoft.Extensions.Logging.Abstractions.1.0.0-rc1-15675.nupkg",
         "Microsoft.Extensions.Logging.Abstractions.1.0.0-rc1-15675.nupkg.sha512",
         "Microsoft.Extensions.Logging.Abstractions.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Logging.Console/1.0.0-rc1-15675": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "OtfFiYYSwo6LTTy9Vkoz61jSEhfhXljlc9OJO9aOUdVGuLNcMCBkeClDc9EbN0Llq9s3u1TXygViTkU1mdW97A==",
+      "files": [
+        "lib/dnx451/Microsoft.Extensions.Logging.Console.dll",
+        "lib/dnx451/Microsoft.Extensions.Logging.Console.xml",
+        "lib/dnxcore50/Microsoft.Extensions.Logging.Console.dll",
+        "lib/dnxcore50/Microsoft.Extensions.Logging.Console.xml",
+        "lib/dotnet/Microsoft.Extensions.Logging.Console.dll",
+        "lib/dotnet/Microsoft.Extensions.Logging.Console.xml",
+        "lib/net45/Microsoft.Extensions.Logging.Console.dll",
+        "lib/net45/Microsoft.Extensions.Logging.Console.xml",
+        "Microsoft.Extensions.Logging.Console.1.0.0-rc1-15675.nupkg",
+        "Microsoft.Extensions.Logging.Console.1.0.0-rc1-15675.nupkg.sha512",
+        "Microsoft.Extensions.Logging.Console.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Logging.Debug/1.0.0-rc1-15675": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "YS3EKjxEwlq2USCGj5Fh6Ed/7P1emuWvnbQyfL2Lmstkm/CYxuZRiUcAVXImucBdChH+n1kwRmfpbxPw16+Rvg==",
+      "files": [
+        "lib/dnx451/Microsoft.Extensions.Logging.Debug.dll",
+        "lib/dnx451/Microsoft.Extensions.Logging.Debug.xml",
+        "lib/dnxcore50/Microsoft.Extensions.Logging.Debug.dll",
+        "lib/dnxcore50/Microsoft.Extensions.Logging.Debug.xml",
+        "lib/dotnet/Microsoft.Extensions.Logging.Debug.dll",
+        "lib/dotnet/Microsoft.Extensions.Logging.Debug.xml",
+        "lib/net45/Microsoft.Extensions.Logging.Debug.dll",
+        "lib/net45/Microsoft.Extensions.Logging.Debug.xml",
+        "Microsoft.Extensions.Logging.Debug.1.0.0-rc1-15675.nupkg",
+        "Microsoft.Extensions.Logging.Debug.1.0.0-rc1-15675.nupkg.sha512",
+        "Microsoft.Extensions.Logging.Debug.nuspec"
       ]
     },
     "Microsoft.Extensions.Logging.Testing/1.0.0-rc1-15716": {

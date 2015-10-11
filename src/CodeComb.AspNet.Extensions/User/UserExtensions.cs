@@ -16,7 +16,7 @@ namespace Microsoft.Extensions.DependencyInjection
             where TUser : IdentityUser<TKey>
             where TKey : IEquatable<TKey>
         {
-            return self.AddScoped<User<TKey, TUser>>();
+            return self.AddScoped<User<TUser, TKey>>();
         }
     }
 }
