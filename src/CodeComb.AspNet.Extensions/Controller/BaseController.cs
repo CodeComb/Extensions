@@ -12,7 +12,7 @@ namespace Microsoft.AspNet.Mvc
     {
         public IConfiguration Configuration { get { return Resolver?.GetService<IConfiguration>(); } }
         
-        public CodeComb.AspNet.Extensions.Cookies.Cookies Cookies { get { return Resolver?.GetService<CodeComb.AspNet.Extensions.Cookies.Cookies>(); } }
+        public CodeComb.AspNet.Extensions.SmartCookies.SmartCookies Cookies { get { return Resolver?.GetService<CodeComb.AspNet.Extensions.SmartCookies.SmartCookies>(); } }
         
         public CodeComb.AspNet.Extensions.Template.Template Template { get { return Resolver?.GetService<CodeComb.AspNet.Extensions.Template.Template>(); } }
 

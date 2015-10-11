@@ -27,7 +27,7 @@ namespace CodeComb.AspNet.Extensions.Test
                 .Returns(httpContext.Object);
 
             // Act
-            var cookie = new Cookies.Cookies(accessor.Object);
+            var cookie = new SmartCookies.SmartCookies(accessor.Object);
             var actual = cookie["test"];
 
             // Assert
@@ -49,7 +49,7 @@ namespace CodeComb.AspNet.Extensions.Test
                 .Returns(httpContext.Object);
 
             // Act
-            var cookie = new Cookies.Cookies(accessor.Object);
+            var cookie = new SmartCookies.SmartCookies(accessor.Object);
             var actual = cookie["test"];
 
             // Assert
@@ -72,7 +72,7 @@ namespace CodeComb.AspNet.Extensions.Test
                 .Returns(httpContext.Object);
 
             // Act
-            var cookie = new Cookies.Cookies(accessor.Object);
+            var cookie = new SmartCookies.SmartCookies(accessor.Object);
             cookie["test"] = "1";
 
             // Assert
