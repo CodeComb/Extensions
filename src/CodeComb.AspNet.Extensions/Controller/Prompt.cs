@@ -10,6 +10,7 @@ namespace Microsoft.AspNet.Mvc
         [NonAction]
         protected IActionResult Prompt(Prompt prompt)
         {
+            Response.StatusCode = prompt.StatusCode;
             return View("Prompt", prompt);
         }
     }

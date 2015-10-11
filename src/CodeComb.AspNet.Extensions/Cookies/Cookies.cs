@@ -16,6 +16,21 @@ namespace CodeComb.AspNet.Extensions.Cookies
             httpContext = accessor.HttpContext;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="expires">seconds</param>
+        /// <returns></returns>
+        public string this[string key, long expires]
+        {
+            set
+            {
+                var time = DateTime.Now.AddSeconds(expires);
+                httpContext.Response.Cookies.Append(key, value, new CookieOptions { Expires = time });
+            }
+        }
+
         public string this[string key]
         {
             get

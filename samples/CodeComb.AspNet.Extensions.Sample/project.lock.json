@@ -820,6 +820,26 @@
           "lib/dnx451/Microsoft.AspNet.Mvc.Razor.Host.dll": {}
         }
       },
+      "Microsoft.AspNet.Mvc.TagHelpers/6.0.0-rc1-16034": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Mvc.Razor": "6.0.0-rc1-16034",
+          "Microsoft.Extensions.Caching.Memory": "1.0.0-rc1-15690",
+          "Microsoft.Extensions.FileSystemGlobbing": "1.0.0-rc1-15682"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.AspNet.Mvc.TagHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.AspNet.Mvc.TagHelpers.dll": {}
+        }
+      },
       "Microsoft.AspNet.Mvc.ViewFeatures/6.0.0-rc1-16034": {
         "type": "package",
         "dependencies": {
@@ -1315,6 +1335,21 @@
         },
         "runtime": {
           "lib/dnx451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.FileSystemGlobbing/1.0.0-rc1-15682": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Extensions.FileSystemGlobbing.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Extensions.FileSystemGlobbing.dll": {}
         }
       },
       "Microsoft.Extensions.Globalization.CultureInfoCache/1.0.0-rc1-15735": {
@@ -2480,6 +2515,21 @@
           "lib/dnxcore50/Microsoft.AspNet.Mvc.Razor.Host.dll": {}
         }
       },
+      "Microsoft.AspNet.Mvc.TagHelpers/6.0.0-rc1-16034": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Mvc.Razor": "6.0.0-rc1-16034",
+          "Microsoft.Extensions.Caching.Memory": "1.0.0-rc1-15690",
+          "Microsoft.Extensions.FileSystemGlobbing": "1.0.0-rc1-15682",
+          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23405"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.AspNet.Mvc.TagHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.AspNet.Mvc.TagHelpers.dll": {}
+        }
+      },
       "Microsoft.AspNet.Mvc.ViewFeatures/6.0.0-rc1-16034": {
         "type": "package",
         "dependencies": {
@@ -2927,6 +2977,22 @@
         },
         "runtime": {
           "lib/dnxcore50/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.FileSystemGlobbing/1.0.0-rc1-15682": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11-beta-23405",
+          "System.IO.FileSystem": "4.0.1-beta-23405",
+          "System.Linq": "4.0.1-beta-23405",
+          "System.Runtime": "4.0.21-beta-23405",
+          "System.Runtime.Extensions": "4.0.11-beta-23405"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Extensions.FileSystemGlobbing.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Extensions.FileSystemGlobbing.dll": {}
         }
       },
       "Microsoft.Extensions.Globalization.CultureInfoCache/1.0.0-rc1-15735": {
@@ -5016,6 +5082,26 @@
           "lib/dnx451/Microsoft.AspNet.Mvc.Razor.Host.dll": {}
         }
       },
+      "Microsoft.AspNet.Mvc.TagHelpers/6.0.0-rc1-16034": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Mvc.Razor": "6.0.0-rc1-16034",
+          "Microsoft.Extensions.Caching.Memory": "1.0.0-rc1-15690",
+          "Microsoft.Extensions.FileSystemGlobbing": "1.0.0-rc1-15682"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.AspNet.Mvc.TagHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.AspNet.Mvc.TagHelpers.dll": {}
+        }
+      },
       "Microsoft.AspNet.Mvc.ViewFeatures/6.0.0-rc1-16034": {
         "type": "package",
         "dependencies": {
@@ -5514,6 +5600,21 @@
         },
         "runtime": {
           "lib/dnx451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.FileSystemGlobbing/1.0.0-rc1-15682": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Extensions.FileSystemGlobbing.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Extensions.FileSystemGlobbing.dll": {}
         }
       },
       "Microsoft.Extensions.Globalization.CultureInfoCache/1.0.0-rc1-15735": {
@@ -6798,6 +6899,26 @@
           "lib/dnx451/Microsoft.AspNet.Mvc.Razor.Host.dll": {}
         }
       },
+      "Microsoft.AspNet.Mvc.TagHelpers/6.0.0-rc1-16034": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Mvc.Razor": "6.0.0-rc1-16034",
+          "Microsoft.Extensions.Caching.Memory": "1.0.0-rc1-15690",
+          "Microsoft.Extensions.FileSystemGlobbing": "1.0.0-rc1-15682"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.AspNet.Mvc.TagHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.AspNet.Mvc.TagHelpers.dll": {}
+        }
+      },
       "Microsoft.AspNet.Mvc.ViewFeatures/6.0.0-rc1-16034": {
         "type": "package",
         "dependencies": {
@@ -7296,6 +7417,21 @@
         },
         "runtime": {
           "lib/dnx451/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.FileSystemGlobbing/1.0.0-rc1-15682": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Extensions.FileSystemGlobbing.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Extensions.FileSystemGlobbing.dll": {}
         }
       },
       "Microsoft.Extensions.Globalization.CultureInfoCache/1.0.0-rc1-15735": {
@@ -8461,6 +8597,21 @@
           "lib/dnxcore50/Microsoft.AspNet.Mvc.Razor.Host.dll": {}
         }
       },
+      "Microsoft.AspNet.Mvc.TagHelpers/6.0.0-rc1-16034": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Mvc.Razor": "6.0.0-rc1-16034",
+          "Microsoft.Extensions.Caching.Memory": "1.0.0-rc1-15690",
+          "Microsoft.Extensions.FileSystemGlobbing": "1.0.0-rc1-15682",
+          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23405"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.AspNet.Mvc.TagHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.AspNet.Mvc.TagHelpers.dll": {}
+        }
+      },
       "Microsoft.AspNet.Mvc.ViewFeatures/6.0.0-rc1-16034": {
         "type": "package",
         "dependencies": {
@@ -8911,6 +9062,22 @@
         },
         "runtime": {
           "lib/dnxcore50/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.FileSystemGlobbing/1.0.0-rc1-15682": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11-beta-23405",
+          "System.IO.FileSystem": "4.0.1-beta-23405",
+          "System.Linq": "4.0.1-beta-23405",
+          "System.Runtime": "4.0.21-beta-23405",
+          "System.Runtime.Extensions": "4.0.11-beta-23405"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Extensions.FileSystemGlobbing.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Extensions.FileSystemGlobbing.dll": {}
         }
       },
       "Microsoft.Extensions.Globalization.CultureInfoCache/1.0.0-rc1-15735": {
@@ -11301,6 +11468,21 @@
           "lib/dnxcore50/Microsoft.AspNet.Mvc.Razor.Host.dll": {}
         }
       },
+      "Microsoft.AspNet.Mvc.TagHelpers/6.0.0-rc1-16034": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Mvc.Razor": "6.0.0-rc1-16034",
+          "Microsoft.Extensions.Caching.Memory": "1.0.0-rc1-15690",
+          "Microsoft.Extensions.FileSystemGlobbing": "1.0.0-rc1-15682",
+          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23405"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.AspNet.Mvc.TagHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.AspNet.Mvc.TagHelpers.dll": {}
+        }
+      },
       "Microsoft.AspNet.Mvc.ViewFeatures/6.0.0-rc1-16034": {
         "type": "package",
         "dependencies": {
@@ -11751,6 +11933,22 @@
         },
         "runtime": {
           "lib/dnxcore50/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.FileSystemGlobbing/1.0.0-rc1-15682": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11-beta-23405",
+          "System.IO.FileSystem": "4.0.1-beta-23405",
+          "System.Linq": "4.0.1-beta-23405",
+          "System.Runtime": "4.0.21-beta-23405",
+          "System.Runtime.Extensions": "4.0.11-beta-23405"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Extensions.FileSystemGlobbing.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Extensions.FileSystemGlobbing.dll": {}
         }
       },
       "Microsoft.Extensions.Globalization.CultureInfoCache/1.0.0-rc1-15735": {
@@ -14019,6 +14217,20 @@
         "Microsoft.AspNet.Mvc.Razor.Host.nuspec"
       ]
     },
+    "Microsoft.AspNet.Mvc.TagHelpers/6.0.0-rc1-16034": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "FOjgCl2UA4YmPcG80qNovnL8nWJquOWehkgxI5NOxzVUM/mmUzrcnsBckq7F7SsIYIG9peWM5q5Y1UzuUbjk4g==",
+      "files": [
+        "lib/dnx451/Microsoft.AspNet.Mvc.TagHelpers.dll",
+        "lib/dnx451/Microsoft.AspNet.Mvc.TagHelpers.xml",
+        "lib/dnxcore50/Microsoft.AspNet.Mvc.TagHelpers.dll",
+        "lib/dnxcore50/Microsoft.AspNet.Mvc.TagHelpers.xml",
+        "Microsoft.AspNet.Mvc.TagHelpers.6.0.0-rc1-16034.nupkg",
+        "Microsoft.AspNet.Mvc.TagHelpers.6.0.0-rc1-16034.nupkg.sha512",
+        "Microsoft.AspNet.Mvc.TagHelpers.nuspec"
+      ]
+    },
     "Microsoft.AspNet.Mvc.ViewFeatures/6.0.0-rc1-16034": {
       "type": "package",
       "serviceable": true,
@@ -14501,6 +14713,22 @@
         "Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0-rc1-15674.nupkg",
         "Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0-rc1-15674.nupkg.sha512",
         "Microsoft.Extensions.DependencyInjection.Abstractions.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.FileSystemGlobbing/1.0.0-rc1-15682": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "q+x3vG3OcdrOFKGDh9h7OwFe/djWhsfvkgwAavvrcxsoFQvriLqgdQGoo2OYBqhZ1SrCGyX12UHMsZujMJC65w==",
+      "files": [
+        "lib/dnx451/Microsoft.Extensions.FileSystemGlobbing.dll",
+        "lib/dnx451/Microsoft.Extensions.FileSystemGlobbing.xml",
+        "lib/dnxcore50/Microsoft.Extensions.FileSystemGlobbing.dll",
+        "lib/dnxcore50/Microsoft.Extensions.FileSystemGlobbing.xml",
+        "lib/net45/Microsoft.Extensions.FileSystemGlobbing.dll",
+        "lib/net45/Microsoft.Extensions.FileSystemGlobbing.xml",
+        "Microsoft.Extensions.FileSystemGlobbing.1.0.0-rc1-15682.nupkg",
+        "Microsoft.Extensions.FileSystemGlobbing.1.0.0-rc1-15682.nupkg.sha512",
+        "Microsoft.Extensions.FileSystemGlobbing.nuspec"
       ]
     },
     "Microsoft.Extensions.Globalization.CultureInfoCache/1.0.0-rc1-15735": {
@@ -18148,6 +18376,7 @@
       "Microsoft.AspNet.Server.WebListener >= 1.0.0-*",
       "Microsoft.AspNet.Server.Kestrel >= 1.0.0-*",
       "Microsoft.AspNet.Mvc >= 6.0.0-*",
+      "Microsoft.AspNet.Mvc.TagHelpers >= 6.0.0-*",
       "Microsoft.AspNet.StaticFiles >= 1.0.0-*",
       "Microsoft.AspNet.Identity.EntityFramework >= 3.0.0-*",
       "EntityFramework.InMemory >= 7.0.0-*",
