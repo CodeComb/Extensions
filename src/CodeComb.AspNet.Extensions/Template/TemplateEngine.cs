@@ -53,7 +53,6 @@ namespace CodeComb.AspNet.Extensions.Template
         private readonly IRazorViewFactory _viewFactory;
         private readonly IList<IViewLocationExpander> _viewLocationExpanders;
         private readonly IViewLocationCache _viewLocationCache;
-        private readonly Template _template;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TemplateEngine" /> class.
@@ -63,14 +62,12 @@ namespace CodeComb.AspNet.Extensions.Template
             IRazorPageFactory pageFactory,
             IRazorViewFactory viewFactory,
             IOptions<RazorViewEngineOptions> optionsAccessor,
-            IViewLocationCache viewLocationCache,
-            Template template)
+            IViewLocationCache viewLocationCache)
         {
             _pageFactory = pageFactory;
             _viewFactory = viewFactory;
             _viewLocationExpanders = optionsAccessor.Value.ViewLocationExpanders;
             _viewLocationCache = viewLocationCache;
-            _template = template;
         }
 
         /// <summary>
@@ -278,6 +275,7 @@ namespace CodeComb.AspNet.Extensions.Template
             var areaName = GetNormalizedRouteValue(context, AreaKey);
 
             // Get template identifier
+            var _template = context.HttpContext.RequestServices.GetService<Template>();
             var templateIdentifier = _template.Current.Identifier;
 
             // Only use the area view location formats if we have an area token.
@@ -329,16 +327,13 @@ namespace CodeComb.AspNet.Extensions.Template
                 var page = _pageFactory.CreateInstance(path);
                 if (page != null)
                 {
-                    // 3a. We found a page. Cache the set of values that produced it and return a found result.
-                    _viewLocationCache.Set(expanderContext, new ViewLocationCacheResult(path, searchedLocations));
+                    // 3a. We found a page.
                     return new RazorPageResult(pageName, page);
                 }
-
                 searchedLocations.Add(path);
             }
 
             // 3b. We did not find a page for any of the paths.
-            _viewLocationCache.Set(expanderContext, new ViewLocationCacheResult(searchedLocations));
             return new RazorPageResult(pageName, searchedLocations);
         }
 

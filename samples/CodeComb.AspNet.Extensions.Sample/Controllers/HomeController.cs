@@ -21,7 +21,7 @@ namespace CodeComb.AspNet.Extensions.Sample.Controllers
 
         public IActionResult SetTemplate(string identifier, [FromHeader]string Referer)
         {
-            Cookies["ASPNET_TEMPLATE"] = "default";
+            Cookies["ASPNET_TEMPLATE"] = identifier;
             return Redirect(Referer ?? "/");
         }
 
