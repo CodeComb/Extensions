@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.0-beta8",
   "description": "CodeComb.AspNet.Extensions.Test Class Library",
   "authors": [ "Yuuko" ],
   "tags": [ "" ],
@@ -12,8 +12,8 @@
     "test": "xunit.runner.aspnet"
   },
   "dependencies": {
-    "CodeComb.AspNet.Extensions": "2.0.0-*",
-    "CodeComb.AspNet.Extensions.Sample": "1.0.0-*",
-    "CodeComb.TestFixture.Mvc": "2.0.0-*"
+    "CodeComb.AspNet.Extensions": "2.0.0-beta8",
+    "CodeComb.AspNet.Extensions.Sample": "1.0.0-beta8",
+    "CodeComb.TestFixture.Mvc": "2.0.0-beta8"
   }
 }

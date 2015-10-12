@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Http.Internal;
-using Microsoft.Extensions.Primitives;
+using Microsoft.Framework.Primitives;
 using Xunit;
 using Moq;
 

@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using Microsoft.Extensions.WebEncoders;
+using Microsoft.Framework.WebEncoders;
 
 namespace Microsoft.AspNet.Mvc.Rendering
 {

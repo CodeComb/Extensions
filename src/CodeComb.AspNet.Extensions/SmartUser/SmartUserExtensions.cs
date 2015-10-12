@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
 using CodeComb.AspNet.Extensions.SmartUser;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace Microsoft.Framework.DependencyInjection
 {
     public static class SmartUserExtensions
     {

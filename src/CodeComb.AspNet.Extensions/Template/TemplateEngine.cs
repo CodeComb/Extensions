@@ -8,8 +8,8 @@ using Microsoft.AspNet.Mvc.ViewFeatures;
 using Microsoft.AspNet.Mvc.Routing;
 using Microsoft.AspNet.Mvc.Razor;
 using Microsoft.AspNet.Mvc.Abstractions;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.Framework.DependencyInjection;
+using Microsoft.Framework.OptionsModel;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.ViewEngines;
 

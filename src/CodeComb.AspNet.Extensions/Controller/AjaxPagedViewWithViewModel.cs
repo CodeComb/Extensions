@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using System.Security.Claims;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Framework.DependencyInjection;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Newtonsoft.Json;
 

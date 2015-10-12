@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNet.Hosting;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Framework.Configuration;
 using Microsoft.Dnx.Runtime;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace Microsoft.Framework.DependencyInjection
 {
     public static class ConfigurationExtensions
     {

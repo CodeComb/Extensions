@@ -1,6 +1,6 @@
 ﻿{
   "title": "CodeComb.AspNet.Extensions",
-  "version": "2.0.0-*",
+  "version": "2.0.0-beta8",
   "description": "ASP.Net vNext Extensions",
   "copyright": "Harbin Code Comb Technology Co.,Ltd",
   "authors": [ "AmamiyaYuuko" ],
@@ -10,9 +10,9 @@
   "licenseUrl": "",
 
   "dependencies": {
-    "Microsoft.Extensions.Configuration.Json": "1.0.0-*",
-    "Microsoft.AspNet.Mvc": "6.0.0-*",
-    "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-*"
+    "Microsoft.Framework.Configuration.Json": "1.0.0-beta8",
+    "Microsoft.AspNet.Mvc": "6.0.0-beta8",
+    "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-beta8"
   },
 
   "frameworks": {

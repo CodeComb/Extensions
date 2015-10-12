@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Framework.DependencyInjection;
 using Microsoft.AspNet.Http;
 
 namespace Microsoft.AspNet.Mvc

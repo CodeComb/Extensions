@@ -6,7 +6,7 @@ using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc.Razor;
 using CodeComb.AspNet.Extensions.Template;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace Microsoft.Framework.DependencyInjection
 {
     public static class TemplateExtension
     {

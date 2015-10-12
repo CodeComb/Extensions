@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Framework.Configuration;
+using Microsoft.Framework.DependencyInjection;
 using Microsoft.AspNet.Mvc.Filters;
 
 namespace Microsoft.AspNet.Mvc
