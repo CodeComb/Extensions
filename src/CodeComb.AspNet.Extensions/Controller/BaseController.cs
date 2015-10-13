@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Framework.Configuration;
+using Microsoft.Framework.DependencyInjection;
+using Microsoft.AspNet.Mvc.Filters;
+
+namespace Microsoft.AspNet.Mvc
+{
+    public abstract partial class BaseController : Controller
+    {
+        public IConfiguration Configuration { get { return Resolver?.GetService<IConfiguration>(); } }
+        
+        public CodeComb.AspNet.Extensions.SmartCookies.SmartCookies Cookies { get { return Resolver?.GetService<CodeComb.AspNet.Extensions.SmartCookies.SmartCookies>(); } }
+        
+        public CodeComb.AspNet.Extensions.Template.Template Template { get { return Resolver?.GetService<CodeComb.AspNet.Extensions.Template.Template>(); } }
+
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            Prepare();
+            base.OnActionExecuting(context);
+        }
+
+        public override Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+        {
+            Prepare();
+            return base.OnActionExecutionAsync(context, next);
+        }
+
+        public virtual void Prepare()
+        {
+        }
+    }
+}
