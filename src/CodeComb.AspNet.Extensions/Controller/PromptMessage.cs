@@ -14,5 +14,6 @@ namespace Microsoft.AspNet.Mvc
         public string RedirectText { get; set; }
         public string Requires { get; set; }
         public dynamic Hint { get; set; }
+        public bool HideBack { get; set; }
     }
 }
