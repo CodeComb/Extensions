@@ -5,11 +5,17 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNet.Mvc.Filters;
+using Microsoft.AspNet.Hosting;
+using Microsoft.Dnx.Runtime;
 
 namespace Microsoft.AspNet.Mvc
 {
     public abstract partial class BaseController : Controller
     {
+        public string AppRoot { get { return Resolver?.GetService<IApplicationEnvironment>().ApplicationBasePath; } }
+
+        public string WebRoot { get { return Resolver?.GetService<IHostingEnvironment>().WebRootPath; } }
+
         public IConfiguration Configuration { get { return Resolver?.GetService<IConfiguration>(); } }
         
         public CodeComb.AspNet.Extensions.SmartCookies.SmartCookies Cookies { get { return Resolver?.GetService<CodeComb.AspNet.Extensions.SmartCookies.SmartCookies>(); } }

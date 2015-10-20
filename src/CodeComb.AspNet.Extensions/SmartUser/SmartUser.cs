@@ -20,6 +20,11 @@ namespace CodeComb.AspNet.Extensions.SmartUser
 
         private TUser _current = null;
 
+        public bool IsSignedIn()
+        {
+            return HttpContext.User.IsSignedIn();
+        }
+
         public new TUser Current
         {
             get
