@@ -30,5 +30,16 @@ namespace CodeComb.AspNet.Extensions.Sample.Controllers
         {
             return Content("You are able to access this action.");
         }
+
+        public IActionResult Ajax()
+        {
+            var ret = new List<string>
+            {
+                "abc",
+                "123",
+                "!@#"
+            };
+            return AjaxPagedView(ret, ".lst-ajax-test");
+        }
     }
 }
