@@ -1828,7 +1828,7 @@
     "DNXCore,Version=v5.0": {
       "CodeComb.AspNet.Extensions/2.0.0": {
         "type": "project",
-        "framework": "DNXCore,Version=v5.0",
+        "framework": ".NETPlatform,Version=v5.4",
         "dependencies": {
           "Microsoft.AspNet.Identity.EntityFramework": "3.0.0",
           "Microsoft.AspNet.Mvc": "6.0.0",
@@ -7956,7 +7956,7 @@
     "DNXCore,Version=v5.0/win7-x86": {
       "CodeComb.AspNet.Extensions/2.0.0": {
         "type": "project",
-        "framework": "DNXCore,Version=v5.0",
+        "framework": ".NETPlatform,Version=v5.4",
         "dependencies": {
           "Microsoft.AspNet.Identity.EntityFramework": "3.0.0",
           "Microsoft.AspNet.Mvc": "6.0.0",
@@ -10841,7 +10841,7 @@
     "DNXCore,Version=v5.0/win7-x64": {
       "CodeComb.AspNet.Extensions/2.0.0": {
         "type": "project",
-        "framework": "DNXCore,Version=v5.0",
+        "framework": ".NETPlatform,Version=v5.4",
         "dependencies": {
           "Microsoft.AspNet.Identity.EntityFramework": "3.0.0",
           "Microsoft.AspNet.Mvc": "6.0.0",
