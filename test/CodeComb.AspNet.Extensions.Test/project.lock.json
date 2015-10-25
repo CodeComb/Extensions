@@ -29,14 +29,14 @@
           "Microsoft.Extensions.Logging.Debug": "1.0.0"
         }
       },
-      "CodeComb.TestFixture/2.0.0-t151023003634": {
+      "CodeComb.TestFixture/2.0.0-t151025034439": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.Mvc.Formatters.Xml": "6.0.0-rc1-16144",
-          "Microsoft.AspNet.TestHost": "1.0.0-rc1-15825",
-          "Microsoft.AspNet.Testing": "1.0.0-rc1-15779",
+          "Microsoft.AspNet.Mvc.Formatters.Xml": "6.0.0-rc1-16174",
+          "Microsoft.AspNet.TestHost": "1.0.0-rc1-15847",
+          "Microsoft.AspNet.Testing": "1.0.0-rc1-15793",
           "Microsoft.Extensions.Logging.Testing": "1.0.0-rc1-15758",
-          "xunit.runner.aspnet": "2.0.0-aspnet-rc1-15771"
+          "xunit.runner.aspnet": "2.0.0-aspnet-rc1-15784"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -51,11 +51,11 @@
           "lib/dnx451/CodeComb.TestFixture.dll": {}
         }
       },
-      "CodeComb.TestFixture.Mvc/2.0.0-t151023003634": {
+      "CodeComb.TestFixture.Mvc/2.0.0-t151025034439": {
         "type": "package",
         "dependencies": {
-          "CodeComb.TestFixture": "2.0.0-t151023003634",
-          "Microsoft.AspNet.Identity": "3.0.0-rc1-15938",
+          "CodeComb.TestFixture": "2.0.0-t151025034439",
+          "Microsoft.AspNet.Identity": "3.0.0-rc1-15949",
           "Moq": "4.2.1507.118"
         },
         "frameworkAssemblies": [
@@ -791,10 +791,10 @@
           "lib/net451/Microsoft.AspNet.Mvc.Formatters.Json.dll": {}
         }
       },
-      "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16144": {
+      "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16174": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.Mvc.Core": "6.0.0-rc1-16144"
+          "Microsoft.AspNet.Mvc.Core": "6.0.0-rc1-16174"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -1078,10 +1078,10 @@
           "lib/net451/Microsoft.AspNet.StaticFiles.dll": {}
         }
       },
-      "Microsoft.AspNet.TestHost/1.0.0-rc1-15825": {
+      "Microsoft.AspNet.TestHost/1.0.0-rc1-15847": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.Hosting": "1.0.0-rc1-15825"
+          "Microsoft.AspNet.Hosting": "1.0.0-rc1-15847"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -1091,17 +1091,18 @@
           "System.Net.Http"
         ],
         "compile": {
-          "lib/dnx451/Microsoft.AspNet.TestHost.dll": {}
+          "lib/net451/Microsoft.AspNet.TestHost.dll": {}
         },
         "runtime": {
-          "lib/dnx451/Microsoft.AspNet.TestHost.dll": {}
+          "lib/net451/Microsoft.AspNet.TestHost.dll": {}
         }
       },
-      "Microsoft.AspNet.Testing/1.0.0-rc1-15779": {
+      "Microsoft.AspNet.Testing/1.0.0-rc1-15793": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-rc1-15982",
-          "xunit.runner.aspnet": "2.0.0-aspnet-rc1-15770"
+          "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-15996",
+          "xunit.assert": "2.1.0",
+          "xunit.extensibility.execution": "2.1.0"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -1113,10 +1114,10 @@
           "System.Threading.Tasks"
         ],
         "compile": {
-          "lib/dnx451/Microsoft.AspNet.Testing.dll": {}
+          "lib/net451/Microsoft.AspNet.Testing.dll": {}
         },
         "runtime": {
-          "lib/dnx451/Microsoft.AspNet.Testing.dll": {}
+          "lib/net451/Microsoft.AspNet.Testing.dll": {}
         }
       },
       "Microsoft.AspNet.WebUtilities/1.0.0-rc1-15870": {
@@ -1232,27 +1233,12 @@
           "lib/net451/Microsoft.Dnx.Compilation.CSharp.Common.dll": {}
         }
       },
-      "Microsoft.Dnx.Runtime.Abstractions/1.0.0-rc1-15982": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Dnx.Runtime.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Dnx.Runtime.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.Dnx.TestHost/1.0.0-rc1-15779": {
+      "Microsoft.Dnx.TestHost/1.0.0-rc1-15793": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Dnx.Compilation.Abstractions": "1.0.0-rc1-15982",
-          "Microsoft.Dnx.Testing.Abstractions": "1.0.0-rc1-15779",
-          "Microsoft.Extensions.Logging": "1.0.0-rc1-15733",
+          "Microsoft.Dnx.Compilation.Abstractions": "1.0.0-rc1-15996",
+          "Microsoft.Dnx.Testing.Abstractions": "1.0.0-rc1-15793",
+          "Microsoft.Extensions.Logging": "1.0.0-rc1-15741",
           "Newtonsoft.Json": "6.0.6"
         },
         "frameworkAssemblies": [
@@ -1270,7 +1256,7 @@
           "lib/dnx451/Microsoft.Dnx.TestHost.dll": {}
         }
       },
-      "Microsoft.Dnx.Testing.Abstractions/1.0.0-rc1-15779": {
+      "Microsoft.Dnx.Testing.Abstractions/1.0.0-rc1-15793": {
         "type": "package",
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -2070,12 +2056,12 @@
           "lib/dnx451/xunit.execution.dotnet.dll": {}
         }
       },
-      "xunit.runner.aspnet/2.0.0-aspnet-rc1-15771": {
+      "xunit.runner.aspnet/2.0.0-aspnet-rc1-15784": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-rc1-15982",
-          "Microsoft.Dnx.TestHost": "1.0.0-rc1-15779",
-          "Microsoft.Dnx.Testing.Abstractions": "1.0.0-rc1-15779",
+          "Microsoft.Dnx.TestHost": "1.0.0-rc1-15793",
+          "Microsoft.Dnx.Testing.Abstractions": "1.0.0-rc1-15793",
+          "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-15996",
           "xunit.assert": "2.1.0",
           "xunit.extensibility.execution": "2.1.0",
           "xunit.runner.reporters": "2.1.0"
@@ -2151,14 +2137,14 @@
           "Microsoft.Extensions.Logging.Debug": "1.0.0"
         }
       },
-      "CodeComb.TestFixture/2.0.0-t151023003634": {
+      "CodeComb.TestFixture/2.0.0-t151025034439": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.Mvc.Formatters.Xml": "6.0.0-rc1-16144",
-          "Microsoft.AspNet.TestHost": "1.0.0-rc1-15825",
-          "Microsoft.AspNet.Testing": "1.0.0-rc1-15779",
+          "Microsoft.AspNet.Mvc.Formatters.Xml": "6.0.0-rc1-16174",
+          "Microsoft.AspNet.TestHost": "1.0.0-rc1-15847",
+          "Microsoft.AspNet.Testing": "1.0.0-rc1-15793",
           "Microsoft.Extensions.Logging.Testing": "1.0.0-rc1-15758",
-          "xunit.runner.aspnet": "2.0.0-aspnet-rc1-15771"
+          "xunit.runner.aspnet": "2.0.0-aspnet-rc1-15784"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -2173,11 +2159,11 @@
           "lib/dnx451/CodeComb.TestFixture.dll": {}
         }
       },
-      "CodeComb.TestFixture.Mvc/2.0.0-t151023003634": {
+      "CodeComb.TestFixture.Mvc/2.0.0-t151025034439": {
         "type": "package",
         "dependencies": {
-          "CodeComb.TestFixture": "2.0.0-t151023003634",
-          "Microsoft.AspNet.Identity": "3.0.0-rc1-15938",
+          "CodeComb.TestFixture": "2.0.0-t151025034439",
+          "Microsoft.AspNet.Identity": "3.0.0-rc1-15949",
           "Moq": "4.2.1507.118"
         },
         "frameworkAssemblies": [
@@ -2913,10 +2899,10 @@
           "lib/net451/Microsoft.AspNet.Mvc.Formatters.Json.dll": {}
         }
       },
-      "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16144": {
+      "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16174": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.Mvc.Core": "6.0.0-rc1-16144"
+          "Microsoft.AspNet.Mvc.Core": "6.0.0-rc1-16174"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -3203,10 +3189,10 @@
           "lib/net451/Microsoft.AspNet.StaticFiles.dll": {}
         }
       },
-      "Microsoft.AspNet.TestHost/1.0.0-rc1-15825": {
+      "Microsoft.AspNet.TestHost/1.0.0-rc1-15847": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.Hosting": "1.0.0-rc1-15825"
+          "Microsoft.AspNet.Hosting": "1.0.0-rc1-15847"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -3216,17 +3202,18 @@
           "System.Net.Http"
         ],
         "compile": {
-          "lib/dnx451/Microsoft.AspNet.TestHost.dll": {}
+          "lib/net451/Microsoft.AspNet.TestHost.dll": {}
         },
         "runtime": {
-          "lib/dnx451/Microsoft.AspNet.TestHost.dll": {}
+          "lib/net451/Microsoft.AspNet.TestHost.dll": {}
         }
       },
-      "Microsoft.AspNet.Testing/1.0.0-rc1-15779": {
+      "Microsoft.AspNet.Testing/1.0.0-rc1-15793": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-rc1-15982",
-          "xunit.runner.aspnet": "2.0.0-aspnet-rc1-15770"
+          "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-15996",
+          "xunit.assert": "2.1.0",
+          "xunit.extensibility.execution": "2.1.0"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -3238,10 +3225,10 @@
           "System.Threading.Tasks"
         ],
         "compile": {
-          "lib/dnx451/Microsoft.AspNet.Testing.dll": {}
+          "lib/net451/Microsoft.AspNet.Testing.dll": {}
         },
         "runtime": {
-          "lib/dnx451/Microsoft.AspNet.Testing.dll": {}
+          "lib/net451/Microsoft.AspNet.Testing.dll": {}
         }
       },
       "Microsoft.AspNet.WebUtilities/1.0.0-rc1-15870": {
@@ -3362,27 +3349,12 @@
           "lib/net451/Microsoft.Dnx.Compilation.CSharp.Common.dll": {}
         }
       },
-      "Microsoft.Dnx.Runtime.Abstractions/1.0.0-rc1-15982": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Dnx.Runtime.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Dnx.Runtime.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.Dnx.TestHost/1.0.0-rc1-15779": {
+      "Microsoft.Dnx.TestHost/1.0.0-rc1-15793": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Dnx.Compilation.Abstractions": "1.0.0-rc1-15982",
-          "Microsoft.Dnx.Testing.Abstractions": "1.0.0-rc1-15779",
-          "Microsoft.Extensions.Logging": "1.0.0-rc1-15733",
+          "Microsoft.Dnx.Compilation.Abstractions": "1.0.0-rc1-15996",
+          "Microsoft.Dnx.Testing.Abstractions": "1.0.0-rc1-15793",
+          "Microsoft.Extensions.Logging": "1.0.0-rc1-15741",
           "Newtonsoft.Json": "6.0.6"
         },
         "frameworkAssemblies": [
@@ -3400,7 +3372,7 @@
           "lib/dnx451/Microsoft.Dnx.TestHost.dll": {}
         }
       },
-      "Microsoft.Dnx.Testing.Abstractions/1.0.0-rc1-15779": {
+      "Microsoft.Dnx.Testing.Abstractions/1.0.0-rc1-15793": {
         "type": "package",
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -4200,12 +4172,12 @@
           "lib/dnx451/xunit.execution.dotnet.dll": {}
         }
       },
-      "xunit.runner.aspnet/2.0.0-aspnet-rc1-15771": {
+      "xunit.runner.aspnet/2.0.0-aspnet-rc1-15784": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-rc1-15982",
-          "Microsoft.Dnx.TestHost": "1.0.0-rc1-15779",
-          "Microsoft.Dnx.Testing.Abstractions": "1.0.0-rc1-15779",
+          "Microsoft.Dnx.TestHost": "1.0.0-rc1-15793",
+          "Microsoft.Dnx.Testing.Abstractions": "1.0.0-rc1-15793",
+          "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-15996",
           "xunit.assert": "2.1.0",
           "xunit.extensibility.execution": "2.1.0",
           "xunit.runner.reporters": "2.1.0"
@@ -4281,14 +4253,14 @@
           "Microsoft.Extensions.Logging.Debug": "1.0.0"
         }
       },
-      "CodeComb.TestFixture/2.0.0-t151023003634": {
+      "CodeComb.TestFixture/2.0.0-t151025034439": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.Mvc.Formatters.Xml": "6.0.0-rc1-16144",
-          "Microsoft.AspNet.TestHost": "1.0.0-rc1-15825",
-          "Microsoft.AspNet.Testing": "1.0.0-rc1-15779",
+          "Microsoft.AspNet.Mvc.Formatters.Xml": "6.0.0-rc1-16174",
+          "Microsoft.AspNet.TestHost": "1.0.0-rc1-15847",
+          "Microsoft.AspNet.Testing": "1.0.0-rc1-15793",
           "Microsoft.Extensions.Logging.Testing": "1.0.0-rc1-15758",
-          "xunit.runner.aspnet": "2.0.0-aspnet-rc1-15771"
+          "xunit.runner.aspnet": "2.0.0-aspnet-rc1-15784"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -4303,11 +4275,11 @@
           "lib/dnx451/CodeComb.TestFixture.dll": {}
         }
       },
-      "CodeComb.TestFixture.Mvc/2.0.0-t151023003634": {
+      "CodeComb.TestFixture.Mvc/2.0.0-t151025034439": {
         "type": "package",
         "dependencies": {
-          "CodeComb.TestFixture": "2.0.0-t151023003634",
-          "Microsoft.AspNet.Identity": "3.0.0-rc1-15938",
+          "CodeComb.TestFixture": "2.0.0-t151025034439",
+          "Microsoft.AspNet.Identity": "3.0.0-rc1-15949",
           "Moq": "4.2.1507.118"
         },
         "frameworkAssemblies": [
@@ -5043,10 +5015,10 @@
           "lib/net451/Microsoft.AspNet.Mvc.Formatters.Json.dll": {}
         }
       },
-      "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16144": {
+      "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16174": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.Mvc.Core": "6.0.0-rc1-16144"
+          "Microsoft.AspNet.Mvc.Core": "6.0.0-rc1-16174"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -5333,10 +5305,10 @@
           "lib/net451/Microsoft.AspNet.StaticFiles.dll": {}
         }
       },
-      "Microsoft.AspNet.TestHost/1.0.0-rc1-15825": {
+      "Microsoft.AspNet.TestHost/1.0.0-rc1-15847": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNet.Hosting": "1.0.0-rc1-15825"
+          "Microsoft.AspNet.Hosting": "1.0.0-rc1-15847"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -5346,17 +5318,18 @@
           "System.Net.Http"
         ],
         "compile": {
-          "lib/dnx451/Microsoft.AspNet.TestHost.dll": {}
+          "lib/net451/Microsoft.AspNet.TestHost.dll": {}
         },
         "runtime": {
-          "lib/dnx451/Microsoft.AspNet.TestHost.dll": {}
+          "lib/net451/Microsoft.AspNet.TestHost.dll": {}
         }
       },
-      "Microsoft.AspNet.Testing/1.0.0-rc1-15779": {
+      "Microsoft.AspNet.Testing/1.0.0-rc1-15793": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-rc1-15982",
-          "xunit.runner.aspnet": "2.0.0-aspnet-rc1-15770"
+          "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-15996",
+          "xunit.assert": "2.1.0",
+          "xunit.extensibility.execution": "2.1.0"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -5368,10 +5341,10 @@
           "System.Threading.Tasks"
         ],
         "compile": {
-          "lib/dnx451/Microsoft.AspNet.Testing.dll": {}
+          "lib/net451/Microsoft.AspNet.Testing.dll": {}
         },
         "runtime": {
-          "lib/dnx451/Microsoft.AspNet.Testing.dll": {}
+          "lib/net451/Microsoft.AspNet.Testing.dll": {}
         }
       },
       "Microsoft.AspNet.WebUtilities/1.0.0-rc1-15870": {
@@ -5492,27 +5465,12 @@
           "lib/net451/Microsoft.Dnx.Compilation.CSharp.Common.dll": {}
         }
       },
-      "Microsoft.Dnx.Runtime.Abstractions/1.0.0-rc1-15982": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "Microsoft.CSharp",
-          "mscorlib",
-          "System",
-          "System.Core"
-        ],
-        "compile": {
-          "lib/net451/Microsoft.Dnx.Runtime.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net451/Microsoft.Dnx.Runtime.Abstractions.dll": {}
-        }
-      },
-      "Microsoft.Dnx.TestHost/1.0.0-rc1-15779": {
+      "Microsoft.Dnx.TestHost/1.0.0-rc1-15793": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Dnx.Compilation.Abstractions": "1.0.0-rc1-15982",
-          "Microsoft.Dnx.Testing.Abstractions": "1.0.0-rc1-15779",
-          "Microsoft.Extensions.Logging": "1.0.0-rc1-15733",
+          "Microsoft.Dnx.Compilation.Abstractions": "1.0.0-rc1-15996",
+          "Microsoft.Dnx.Testing.Abstractions": "1.0.0-rc1-15793",
+          "Microsoft.Extensions.Logging": "1.0.0-rc1-15741",
           "Newtonsoft.Json": "6.0.6"
         },
         "frameworkAssemblies": [
@@ -5530,7 +5488,7 @@
           "lib/dnx451/Microsoft.Dnx.TestHost.dll": {}
         }
       },
-      "Microsoft.Dnx.Testing.Abstractions/1.0.0-rc1-15779": {
+      "Microsoft.Dnx.Testing.Abstractions/1.0.0-rc1-15793": {
         "type": "package",
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -6330,12 +6288,12 @@
           "lib/dnx451/xunit.execution.dotnet.dll": {}
         }
       },
-      "xunit.runner.aspnet/2.0.0-aspnet-rc1-15771": {
+      "xunit.runner.aspnet/2.0.0-aspnet-rc1-15784": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-rc1-15982",
-          "Microsoft.Dnx.TestHost": "1.0.0-rc1-15779",
-          "Microsoft.Dnx.Testing.Abstractions": "1.0.0-rc1-15779",
+          "Microsoft.Dnx.TestHost": "1.0.0-rc1-15793",
+          "Microsoft.Dnx.Testing.Abstractions": "1.0.0-rc1-15793",
+          "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-15996",
           "xunit.assert": "2.1.0",
           "xunit.extensibility.execution": "2.1.0",
           "xunit.runner.reporters": "2.1.0"
@@ -6394,12 +6352,12 @@
       "type": "project",
       "path": "../../samples/CodeComb.AspNet.Extensions.Sample/project.json"
     },
-    "CodeComb.TestFixture/2.0.0-t151023003634": {
+    "CodeComb.TestFixture/2.0.0-t151025034439": {
       "type": "package",
-      "sha512": "AxbS9nGr+U+bD0PExW6qr067ik5pLWT0ktc63C0IekLX4w1N9baaAgG+Rx1IAPjSzi2MNnxh0Cajk1GOeIm3ug==",
+      "sha512": "lNN71emwkQHCLVhoqRQkdthgNw6PYAzfpVEfZOqObT7YKnyVd5gMZYuFVx7BtvSiajw7rCnCgENmzrCGhsL1Pg==",
       "files": [
-        "CodeComb.TestFixture.2.0.0-t151023003634.nupkg",
-        "CodeComb.TestFixture.2.0.0-t151023003634.nupkg.sha512",
+        "CodeComb.TestFixture.2.0.0-t151025034439.nupkg",
+        "CodeComb.TestFixture.2.0.0-t151025034439.nupkg.sha512",
         "CodeComb.TestFixture.nuspec",
         "lib/dnx451/CodeComb.TestFixture.dll",
         "lib/dnx451/CodeComb.TestFixture.xml",
@@ -6407,12 +6365,12 @@
         "lib/dnxcore50/CodeComb.TestFixture.xml"
       ]
     },
-    "CodeComb.TestFixture.Mvc/2.0.0-t151023003634": {
+    "CodeComb.TestFixture.Mvc/2.0.0-t151025034439": {
       "type": "package",
-      "sha512": "/nfzF6DfIE5bOtdxqKP2gqhbOYQkUSZAHxkE3evZZL2X70BPbDce0a0mxM1EjSMvf2rHJF+egxQ7EqULxlRXNA==",
+      "sha512": "HKRsTjlPc4mW9soV8o50EIJpxtf85w7BUlu414F5hbdVZbNp6Jr5C1f3dX3FjmGFq9BRLQBQyGuN/A8JQkuQ1Q==",
       "files": [
-        "CodeComb.TestFixture.Mvc.2.0.0-t151023003634.nupkg",
-        "CodeComb.TestFixture.Mvc.2.0.0-t151023003634.nupkg.sha512",
+        "CodeComb.TestFixture.Mvc.2.0.0-t151025034439.nupkg",
+        "CodeComb.TestFixture.Mvc.2.0.0-t151025034439.nupkg.sha512",
         "CodeComb.TestFixture.Mvc.nuspec",
         "lib/dnx451/CodeComb.TestFixture.Mvc.dll",
         "lib/dnx451/CodeComb.TestFixture.Mvc.xml"
@@ -6913,17 +6871,17 @@
         "Microsoft.AspNet.Mvc.Formatters.Json.nuspec"
       ]
     },
-    "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16144": {
+    "Microsoft.AspNet.Mvc.Formatters.Xml/6.0.0-rc1-16174": {
       "type": "package",
       "serviceable": true,
-      "sha512": "z1V0Qjrg5DwEOJNzoWaJfjdSt1FGaJJhwa3nl51aRvIuFM7Os1gImo5YWYZYGdy7f6utoNAZYgazpPtrCNs2nw==",
+      "sha512": "mR3OYyC0DJQpSqErG8DH8ZDicoVucxx1+tCtsd9QxKapt9yZ9uMMjHGO/QPzDNEnm7fUgyJ7+LbTUcgS80YQwA==",
       "files": [
         "lib/dotnet5.4/Microsoft.AspNet.Mvc.Formatters.Xml.dll",
         "lib/dotnet5.4/Microsoft.AspNet.Mvc.Formatters.Xml.xml",
         "lib/net451/Microsoft.AspNet.Mvc.Formatters.Xml.dll",
         "lib/net451/Microsoft.AspNet.Mvc.Formatters.Xml.xml",
-        "Microsoft.AspNet.Mvc.Formatters.Xml.6.0.0-rc1-16144.nupkg",
-        "Microsoft.AspNet.Mvc.Formatters.Xml.6.0.0-rc1-16144.nupkg.sha512",
+        "Microsoft.AspNet.Mvc.Formatters.Xml.6.0.0-rc1-16174.nupkg",
+        "Microsoft.AspNet.Mvc.Formatters.Xml.6.0.0-rc1-16174.nupkg.sha512",
         "Microsoft.AspNet.Mvc.Formatters.Xml.nuspec"
       ]
     },
@@ -7122,31 +7080,31 @@
         "Microsoft.AspNet.StaticFiles.nuspec"
       ]
     },
-    "Microsoft.AspNet.TestHost/1.0.0-rc1-15825": {
+    "Microsoft.AspNet.TestHost/1.0.0-rc1-15847": {
       "type": "package",
       "serviceable": true,
-      "sha512": "khRRz3lEG9ivF3Kz+CAbh1k2blOtaLkONdD3A0qU+qWI1xuVlKOIMnuRxvEg15J7x2jRC+POASukTDE3ao4Vcw==",
+      "sha512": "n5+ixTddNocTu2CSbeln7olrGi48TLQJAtQB+wksAqiUHQ7yP9j0pATn/0QpmK52ZMeEtYu1X9lZVwga6SmqHw==",
       "files": [
-        "lib/dnx451/Microsoft.AspNet.TestHost.dll",
-        "lib/dnx451/Microsoft.AspNet.TestHost.xml",
-        "lib/dnxcore50/Microsoft.AspNet.TestHost.dll",
-        "lib/dnxcore50/Microsoft.AspNet.TestHost.xml",
-        "Microsoft.AspNet.TestHost.1.0.0-rc1-15825.nupkg",
-        "Microsoft.AspNet.TestHost.1.0.0-rc1-15825.nupkg.sha512",
+        "lib/dotnet5.4/Microsoft.AspNet.TestHost.dll",
+        "lib/dotnet5.4/Microsoft.AspNet.TestHost.xml",
+        "lib/net451/Microsoft.AspNet.TestHost.dll",
+        "lib/net451/Microsoft.AspNet.TestHost.xml",
+        "Microsoft.AspNet.TestHost.1.0.0-rc1-15847.nupkg",
+        "Microsoft.AspNet.TestHost.1.0.0-rc1-15847.nupkg.sha512",
         "Microsoft.AspNet.TestHost.nuspec"
       ]
     },
-    "Microsoft.AspNet.Testing/1.0.0-rc1-15779": {
+    "Microsoft.AspNet.Testing/1.0.0-rc1-15793": {
       "type": "package",
       "serviceable": true,
-      "sha512": "owmnTY6v4HX+vm+5kOtJcvFuj1Lr+eI2l1JddtcSBOk2NM+kiqpQx7enuF7Armo+vLR7+TYhzR5WyY8RCy9lkA==",
+      "sha512": "9f+DsD6Y491PfhXgkWp5om1hjRKfl03xqCbeyVDjWpcgo8gKPfkrTDmCIA/GIzdatgQZCGxe/K6m/f8vlLg2CA==",
       "files": [
-        "lib/dnx451/Microsoft.AspNet.Testing.dll",
-        "lib/dnx451/Microsoft.AspNet.Testing.xml",
-        "lib/dnxcore50/Microsoft.AspNet.Testing.dll",
-        "lib/dnxcore50/Microsoft.AspNet.Testing.xml",
-        "Microsoft.AspNet.Testing.1.0.0-rc1-15779.nupkg",
-        "Microsoft.AspNet.Testing.1.0.0-rc1-15779.nupkg.sha512",
+        "lib/dotnet5.4/Microsoft.AspNet.Testing.dll",
+        "lib/dotnet5.4/Microsoft.AspNet.Testing.xml",
+        "lib/net451/Microsoft.AspNet.Testing.dll",
+        "lib/net451/Microsoft.AspNet.Testing.xml",
+        "Microsoft.AspNet.Testing.1.0.0-rc1-15793.nupkg",
+        "Microsoft.AspNet.Testing.1.0.0-rc1-15793.nupkg.sha512",
         "Microsoft.AspNet.Testing.nuspec"
       ]
     },
@@ -7265,46 +7223,32 @@
         "Microsoft.Dnx.Compilation.CSharp.Common.nuspec"
       ]
     },
-    "Microsoft.Dnx.Runtime.Abstractions/1.0.0-rc1-15982": {
+    "Microsoft.Dnx.TestHost/1.0.0-rc1-15793": {
       "type": "package",
       "serviceable": true,
-      "sha512": "+nZHGi/JtLmJTUOYX4TkoJqarRDoAfqA97eGMAnnRzQY5WWRUQaZKN081IMryCZx9yG0TFkR2N4JV04vmEG/fg==",
-      "files": [
-        "lib/dotnet5.4/Microsoft.Dnx.Runtime.Abstractions.dll",
-        "lib/dotnet5.4/Microsoft.Dnx.Runtime.Abstractions.xml",
-        "lib/net451/Microsoft.Dnx.Runtime.Abstractions.dll",
-        "lib/net451/Microsoft.Dnx.Runtime.Abstractions.xml",
-        "Microsoft.Dnx.Runtime.Abstractions.1.0.0-rc1-15982.nupkg",
-        "Microsoft.Dnx.Runtime.Abstractions.1.0.0-rc1-15982.nupkg.sha512",
-        "Microsoft.Dnx.Runtime.Abstractions.nuspec"
-      ]
-    },
-    "Microsoft.Dnx.TestHost/1.0.0-rc1-15779": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "zs22zgdfJvRs+Z7UM/hRPK7KWJf9Qmpwm+nxTD5nGlTvN4/P4Yrlp7Si169P9L71U9rKrNWwHbJAb0wEryQAWg==",
+      "sha512": "FMcS4BUy58g4ZDIt7iujwrhtPTJwW9n995JbBNMu8o8cD4f9H4FaPNJL2prgzLRZ/Jnm+sdO7ynw7eS1YLbTWg==",
       "files": [
         "app/project.json",
         "lib/dnx451/Microsoft.Dnx.TestHost.dll",
         "lib/dnx451/Microsoft.Dnx.TestHost.xml",
         "lib/dnxcore50/Microsoft.Dnx.TestHost.dll",
         "lib/dnxcore50/Microsoft.Dnx.TestHost.xml",
-        "Microsoft.Dnx.TestHost.1.0.0-rc1-15779.nupkg",
-        "Microsoft.Dnx.TestHost.1.0.0-rc1-15779.nupkg.sha512",
+        "Microsoft.Dnx.TestHost.1.0.0-rc1-15793.nupkg",
+        "Microsoft.Dnx.TestHost.1.0.0-rc1-15793.nupkg.sha512",
         "Microsoft.Dnx.TestHost.nuspec"
       ]
     },
-    "Microsoft.Dnx.Testing.Abstractions/1.0.0-rc1-15779": {
+    "Microsoft.Dnx.Testing.Abstractions/1.0.0-rc1-15793": {
       "type": "package",
       "serviceable": true,
-      "sha512": "PtWHIC1EoN/o2y7B3+ICCh9Ko2OY6j99YEuHupJOPSjpfMZGPxBtcq8AP8MnYew5ZnwFAxmtGFYEFI3CDHHbrA==",
+      "sha512": "ly4RUFsCLIze7sPuUSv+A0eQZ5IRqW3w4u2UTHcSDpxdrtnrmMzLzy7zfMZ0CqA1qidF5HttTyC27ZJOhxfTSA==",
       "files": [
         "lib/dotnet5.4/Microsoft.Dnx.Testing.Abstractions.dll",
         "lib/dotnet5.4/Microsoft.Dnx.Testing.Abstractions.xml",
         "lib/net451/Microsoft.Dnx.Testing.Abstractions.dll",
         "lib/net451/Microsoft.Dnx.Testing.Abstractions.xml",
-        "Microsoft.Dnx.Testing.Abstractions.1.0.0-rc1-15779.nupkg",
-        "Microsoft.Dnx.Testing.Abstractions.1.0.0-rc1-15779.nupkg.sha512",
+        "Microsoft.Dnx.Testing.Abstractions.1.0.0-rc1-15793.nupkg",
+        "Microsoft.Dnx.Testing.Abstractions.1.0.0-rc1-15793.nupkg.sha512",
         "Microsoft.Dnx.Testing.Abstractions.nuspec"
       ]
     },
@@ -8650,16 +8594,16 @@
         "xunit.extensibility.execution.nuspec"
       ]
     },
-    "xunit.runner.aspnet/2.0.0-aspnet-rc1-15771": {
+    "xunit.runner.aspnet/2.0.0-aspnet-rc1-15784": {
       "type": "package",
-      "sha512": "ectE398z7S1INelwRgTujUsv9lJKMQh/rIT32ufGP664aDx6EUmD7FsaQv1/lI+xhAG7h/6cBOg90kth/a+Enw==",
+      "sha512": "dmBivEogo0HPjsY95QDwVahd9kamDysqe55GTChk1WeLCoqv/J+qTlEbTcRNo8hgszWSfSU/7IHfd+tjESmLSg==",
       "files": [
         "lib/dnx451/xunit.runner.aspnet.dll",
         "lib/dnx451/xunit.runner.aspnet.xml",
         "lib/dnxcore50/xunit.runner.aspnet.dll",
         "lib/dnxcore50/xunit.runner.aspnet.xml",
-        "xunit.runner.aspnet.2.0.0-aspnet-rc1-15771.nupkg",
-        "xunit.runner.aspnet.2.0.0-aspnet-rc1-15771.nupkg.sha512",
+        "xunit.runner.aspnet.2.0.0-aspnet-rc1-15784.nupkg",
+        "xunit.runner.aspnet.2.0.0-aspnet-rc1-15784.nupkg.sha512",
         "xunit.runner.aspnet.nuspec"
       ]
     },
