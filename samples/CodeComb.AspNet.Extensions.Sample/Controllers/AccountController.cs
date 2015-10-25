@@ -21,12 +21,13 @@ namespace CodeComb.AspNet.Extensions.Sample.Controllers
             if (result.Succeeded)
                 return RedirectToAction("Index", "Home");
             else
-                return Prompt(new Prompt {
-                    Title = "Login failed",
-                    Details = "Please check your username or password.",
-                    StatusCode = 403,
-                    RedirectUrl = Url.Link("default", new { controller = "Login", action = "Account" }),
-                    RedirectText = "Retry"
+                return Prompt(x => 
+                {
+                    x.Title = "Login failed";
+                    x.Details = "Please check your username or password.";
+                    x.StatusCode = 403;
+                    x.RedirectUrl = Url.Link("default", new { controller = "Login", action = "Account" });
+                    x.RedirectText = "Retry";
                 });
         }
     }

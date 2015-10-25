@@ -39,7 +39,7 @@ namespace CodeComb.AspNet.Extensions.Sample.Controllers
                 "123",
                 "!@#"
             };
-            return AjaxPagedView(ret, ".lst-ajax-test");
+            return AjaxPagedView(ret, ".lst-ajax-test", 2, AjaxPerformanceType.Tradition);
         }
     }
 }

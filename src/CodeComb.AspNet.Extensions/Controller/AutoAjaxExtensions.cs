@@ -72,7 +72,7 @@ function __Load(sender) {
                 else
                     $(__pagerSelector).append('<li class=' + __plainClass + ' ' + __activeClass + '><a href=\'javascript: __movePage(' + i + ');\'>' + i + '</a></li>');
             }
-            $(__pagerSelector).append('<li class=' + __plainClass + '><a href=\'javascript: __movePage(' + (__pageCount == 0 ? 1 : __pagerCount) + ');\'>»</a></li>');
+            $(__pagerSelector).append('<li class=' + __plainClass + '><a href=\'javascript: __movePage(' + (__pageCount == 0 ? 1 : __pageCount) + ');\'>»</a></li>');
         }
         __paramsCache.raw = 'true';
         if (__performance == 1)
