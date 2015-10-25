@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Dnx.Runtime;
+using Microsoft.Extensions.PlatformAbstractions;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
