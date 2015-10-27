@@ -27,10 +27,10 @@ namespace CodeComb.AspNet.Extensions.Template
             "/Views/Shared/{0}" + ViewExtension,
             "/Templates/{1}/{0}" + ViewExtension,
             "/Templates/Shared/{0}" + ViewExtension,
-            "/Views/{3}/{1}/{0}" + ViewExtension,
-            "/Views/{3}/Shared/{0}" + ViewExtension,
-            "/Templates/{3}/{1}/{0}" + ViewExtension,
-            "/Templates/{3}/Shared/{0}" + ViewExtension,
+            "/Views/{2}/{1}/{0}" + ViewExtension,
+            "/Views/{2}/Shared/{0}" + ViewExtension,
+            "/Templates/{2}/{1}/{0}" + ViewExtension,
+            "/Templates/{2}/Shared/{0}" + ViewExtension,
         };
 
         private static readonly IEnumerable<string> _areaViewLocationFormats = new[]
@@ -311,8 +311,8 @@ namespace CodeComb.AspNet.Extensions.Template
                         location,
                         pageName,
                         controllerName,
-                        areaName,
-                        template.Current.Identifier
+                        template.Current.Identifier,
+                        areaName
                     ));
             }
 
