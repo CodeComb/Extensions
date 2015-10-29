@@ -23,7 +23,10 @@ namespace Microsoft.AspNet.Mvc
             foreach (var r in roles)
             {
                 if (context.HttpContext.User.IsInRole(r))
+                {
                     base.OnActionExecuting(context);
+                    return;
+                }
             }
             HandleUnauthorizedRequest(context);
         }
