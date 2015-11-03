@@ -14,6 +14,7 @@
   "dependencies": {
     "CodeComb.AspNet.Extensions": "2.0.0-*",
     "CodeComb.AspNet.Extensions.Sample": "1.0.0-*",
-    "CodeComb.TestFixture.Mvc": "2.0.0-*"
+    "CodeComb.TestFixture.Mvc": "2.0.0-*",
+    "xunit.runner.aspnet": "2.0.0-aspnet-*"
   }
 }
