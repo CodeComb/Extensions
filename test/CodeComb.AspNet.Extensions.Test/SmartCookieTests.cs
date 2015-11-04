@@ -18,7 +18,7 @@ namespace CodeComb.AspNet.Extensions.Test
             // Arrange
             var req = new Mock<HttpRequest>();
             req.Setup(x => x.Cookies)
-                .Returns(new ReadableStringCollection(new Dictionary<string, StringValues> { { "test", "Hello world" } }));
+                .Returns(new RequestCookieCollection(new Dictionary<string, string> { { "test", "Hello world" } }));
             var httpContext = new Mock<HttpContext>();
             httpContext.Setup(x => x.Request)
                 .Returns(req.Object);
@@ -40,7 +40,7 @@ namespace CodeComb.AspNet.Extensions.Test
             // Arrange
             var req = new Mock<HttpRequest>();
             req.Setup(x => x.Cookies)
-                .Returns(new ReadableStringCollection(new Dictionary<string, StringValues> { }));
+                .Returns(new RequestCookieCollection());
             var httpContext = new Mock<HttpContext>();
             httpContext.Setup(x => x.Request)
                 .Returns(req.Object);

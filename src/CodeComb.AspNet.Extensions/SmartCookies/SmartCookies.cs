@@ -98,13 +98,8 @@ namespace CodeComb.AspNet.Extensions.SmartCookies
                 {
                     var tmp = httpContext.Request.Cookies.Select(x => x.Value).ToList();
                     var ret = new List<string>();
-                    foreach (var t in tmp)
-                    {
-                        if (t.Count() == 0)
-                            ret.Add(null);
-                        else
-                            ret.Add(t.First());
-                    }
+                    foreach (var t in httpContext.Request.Cookies)
+                        ret.Add(t.Value);
                     return ret;
                 }
                 catch
