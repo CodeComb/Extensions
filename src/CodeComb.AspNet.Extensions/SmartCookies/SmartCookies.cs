@@ -37,7 +37,10 @@ namespace CodeComb.AspNet.Extensions.SmartCookies
             {
                 try
                 {
-                    return httpContext.Request.Cookies[key];
+                    if (httpContext.Request.Cookies.Keys.Contains(key))
+                        return httpContext.Request.Cookies[key];
+                    else
+                        return null;
                 }
                 catch
                 {
