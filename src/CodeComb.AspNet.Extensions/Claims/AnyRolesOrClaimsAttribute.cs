@@ -7,14 +7,14 @@ using Microsoft.AspNet.Http;
 
 namespace Microsoft.AspNet.Mvc
 {
-    public class ClaimOrRolesAuthorizeAttribute : ActionFilterAttribute
+    public class AnyRolesOrClaimsAttribute : ActionFilterAttribute
     {
         private string[] claimTypes;
         private string claimValue;
         private string[] roles;
         private string routeField;
 
-        public ClaimOrRolesAuthorizeAttribute(string Roles, string Types, string RouteField = "id")
+        public AnyRolesOrClaimsAttribute(string Roles, string Types, string RouteField = "id")
         {
             claimTypes = Types.Split(',');
             for (var i = 0; i < claimTypes.Count(); i++)
