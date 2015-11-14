@@ -21,7 +21,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 .AddJsonFile(Path.Combine(appEnv.ApplicationBasePath, $"{fileName}.json"))
                 .AddJsonFile(Path.Combine(appEnv.ApplicationBasePath, $"{fileName}.{env.EnvironmentName}.json"), optional: true);
             var Configuration = builder.Build();
-            self.AddInstance<IConfiguration>(Configuration);
+            self.AddSingleton<IConfiguration>(Configuration);
             config = Configuration;
 
             return self;
@@ -37,7 +37,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 .AddJsonFile(Path.Combine(appEnv.ApplicationBasePath, $"{fileName}.json"))
                 .AddJsonFile(Path.Combine(appEnv.ApplicationBasePath, $"{fileName}.{env.EnvironmentName}.json"), optional: true);
             var Configuration = builder.Build();
-            self.AddInstance<IConfiguration>(Configuration);
+            self.AddSingleton<IConfiguration>(Configuration);
 
             return self;
         }
