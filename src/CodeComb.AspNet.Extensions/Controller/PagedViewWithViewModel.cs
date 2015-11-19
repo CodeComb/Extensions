@@ -24,7 +24,7 @@ namespace Microsoft.AspNet.Mvc
             int? p;
             try
             {
-                if (Request.Query["p"] != null)
+                if (Request.Query["p"].Count > 0)
                 {
                     p = int.Parse(Request.Query["p"].ToString());
                 }

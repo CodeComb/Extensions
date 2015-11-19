@@ -55,6 +55,7 @@ namespace CodeComb.AspNet.Extensions.Sample
             app.UseStaticFiles();
             app.UseAutoAjax();
             app.UseMvc(x => x.MapRoute("default", "{controller=Home}/{action=Index}/{id?}"));
+            app.UseAutoAjax();
 
             await SampleData.InitDB(app.ApplicationServices);
         }

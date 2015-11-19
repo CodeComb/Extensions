@@ -274,10 +274,6 @@ namespace CodeComb.AspNet.Extensions.Template
             // Initialize the dictionary for the typical case of having controller and action tokens.
             var areaName = GetNormalizedRouteValue(context, AreaKey);
 
-            // Get template identifier
-            var _template = context.HttpContext.RequestServices.GetService<Template>();
-            var templateIdentifier = _template.Current.Identifier;
-
             // Only use the area view location formats if we have an area token.
             var viewLocations = !string.IsNullOrEmpty(areaName) ? AreaViewLocationFormats :
                                                                   ViewLocationFormats;
@@ -297,7 +293,6 @@ namespace CodeComb.AspNet.Extensions.Template
 
             // 2. With the values that we've accumumlated so far, check if we have a cached result.
             IEnumerable<string> locationsToSearch = null;
-
             if (locationsToSearch == null)
             {
                 // 2b. We did not find a cached location or did not find a IRazorPage at the cached location.
@@ -309,13 +304,14 @@ namespace CodeComb.AspNet.Extensions.Template
 
                 var controllerName = GetNormalizedRouteValue(context, ControllerKey);
 
+                var template = context.HttpContext.RequestServices.GetService<Template>();
                 locationsToSearch = viewLocations.Select(
                     location => string.Format(
                         CultureInfo.InvariantCulture,
                         location,
                         pageName,
                         controllerName,
-                        templateIdentifier,
+                        template.Current.Identifier,
                         areaName
                     ));
             }
@@ -327,13 +323,16 @@ namespace CodeComb.AspNet.Extensions.Template
                 var page = _pageFactory.CreateInstance(path);
                 if (page != null)
                 {
-                    // 3a. We found a page.
+                    // 3a. We found a page. Cache the set of values that produced it and return a found result.
+                    // _viewLocationCache.Set(expanderContext, new ViewLocationCacheResult(path, searchedLocations));
                     return new RazorPageResult(pageName, page);
                 }
+
                 searchedLocations.Add(path);
             }
 
             // 3b. We did not find a page for any of the paths.
+            _viewLocationCache.Set(expanderContext, new ViewLocationCacheResult(searchedLocations));
             return new RazorPageResult(pageName, searchedLocations);
         }
 
