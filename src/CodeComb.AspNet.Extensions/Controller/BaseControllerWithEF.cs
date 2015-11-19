@@ -7,7 +7,7 @@ namespace Microsoft.AspNet.Mvc
 {
     public abstract class BaseController<TContext> : BaseController
     {
-        [FromServices]
+        [Inject]
         public virtual TContext DB { get; set; }
     }
 }

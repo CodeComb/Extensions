@@ -11,11 +11,15 @@ namespace CodeComb.AspNet.Extensions.Sample.Controllers
 {
     public class HomeController : BaseController
     {
+        [Inject]
+        public new SmartCookies.SmartCookies  Cookies { get; set; }
+
         public IActionResult Index()
         {
             ViewBag.TemplatesCount = Template.Collection.Count;
             ViewBag.CurrentTemplate = Template.Current.Title;
             ViewBag.UserCount = DB.Users.Count();
+            ViewBag.TestInject = Cookies["ASPNET_TEMPLATE"];
             return View();
         }
 

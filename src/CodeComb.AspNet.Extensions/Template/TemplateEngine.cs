@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.Text.Encodings.Web;
 using Microsoft.AspNet.Mvc.Routing;
 using Microsoft.AspNet.Mvc.ViewEngines;
@@ -63,11 +64,11 @@ namespace CodeComb.AspNet.Extensions.Template
         /// which contains following indexes:
         /// {0} - Action Name
         /// {1} - Controller Name
-        /// The values for these locations are case-sensitive on case-senstive file systems.
+        /// The values for these locations are case-sensitive on case-sensitive file systems.
         /// For example, the view for the <c>Test</c> action of <c>HomeController</c> should be located at
         /// <c>/Views/Home/Test.cshtml</c>. Locations such as <c>/views/home/test.cshtml</c> would not be discovered
         /// </remarks>
-        public virtual IEnumerable<string> ViewLocationFormats { get; } = new []
+        public virtual IEnumerable<string> ViewLocationFormats { get; } = new[]
         {
             "/Views/{1}/{0}" + ViewExtension,
             "/Views/Shared/{0}" + ViewExtension,
@@ -90,14 +91,14 @@ namespace CodeComb.AspNet.Extensions.Template
         /// {0} - Action Name
         /// {1} - Controller Name
         /// {2} - Area name
-        /// The values for these locations are case-sensitive on case-senstive file systems.
+        /// The values for these locations are case-sensitive on case-sensitive file systems.
         /// For example, the view for the <c>Test</c> action of <c>HomeController</c> should be located at
         /// <c>/Views/Home/Test.cshtml</c>. Locations such as <c>/views/home/test.cshtml</c> would not be discovered
         /// </remarks>
-        public virtual IEnumerable<string> AreaViewLocationFormats { get; } = new []
+        public virtual IEnumerable<string> AreaViewLocationFormats { get; } = new[]
         {
-            "/Areas/{3}/Views/{1}/{0}" + ViewExtension,
-            "/Areas/{3}/Views/Shared/{0}" + ViewExtension,
+            "/Areas/{2}/Views/{1}/{0}" + ViewExtension,
+            "/Areas/{2}/Views/Shared/{0}" + ViewExtension,
             "/Views/Shared/{0}" + ViewExtension,
             "/Areas/{3}/Templates/{1}/{0}" + ViewExtension,
             "/Areas/{3}/Templates/Shared/{0}" + ViewExtension,
@@ -114,65 +115,6 @@ namespace CodeComb.AspNet.Extensions.Template
         /// A cache for results of view lookups.
         /// </summary>
         protected IMemoryCache ViewLookupCache { get; }
-
-        /// <inheritdoc />
-        public ViewEngineResult FindView(ActionContext context, string viewName)
-        {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-
-            if (string.IsNullOrEmpty(viewName))
-            {
-                throw new ArgumentException(nameof(viewName));
-            }
-
-            var pageResult = GetViewLocationCacheResult(context, viewName, isPartial: false);
-            return CreateViewEngineResult(pageResult, viewName, isPartial: false);
-        }
-
-        /// <inheritdoc />
-        public ViewEngineResult FindPartialView(ActionContext context, string partialViewName)
-        {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-
-            if (string.IsNullOrEmpty(partialViewName))
-            {
-                throw new ArgumentException(nameof(partialViewName));
-            }
-
-            var pageResult = GetViewLocationCacheResult(context, partialViewName, isPartial: true);
-            return CreateViewEngineResult(pageResult, partialViewName, isPartial: true);
-        }
-
-        /// <inheritdoc />
-        public RazorPageResult FindPage(ActionContext context, string pageName)
-        {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-
-            if (string.IsNullOrEmpty(pageName))
-            {
-                throw new ArgumentException(nameof(pageName));
-            }
-
-            var cacheResult = GetViewLocationCacheResult(context, pageName, isPartial: true);
-            if (cacheResult.Success)
-            {
-                var razorPage = cacheResult.ViewEntry.PageFactory();
-                return new RazorPageResult(pageName, razorPage);
-            }
-            else
-            {
-                return new RazorPageResult(pageName, cacheResult.SearchedLocations);
-            }
-        }
 
         /// <summary>
         /// Gets the case-normalized route value for the specified route <paramref name="key"/>.
@@ -247,35 +189,97 @@ namespace CodeComb.AspNet.Extensions.Template
             return stringRouteValue;
         }
 
-        private ViewLocationCacheResult GetViewLocationCacheResult(
-            ActionContext context,
-            string pageName,
-            bool isPartial)
+        /// <inheritdoc />
+        public RazorPageResult FindPage(ActionContext context, string pageName)
         {
-            if (IsApplicationRelativePath(pageName))
+            if (context == null)
             {
-                return LocatePageFromPath(pageName, isPartial);
+                throw new ArgumentNullException(nameof(context));
             }
-            else
+
+            if (string.IsNullOrEmpty(pageName))
             {
-                return LocatePageFromViewLocations(context, pageName, isPartial);
+                throw new ArgumentException(nameof(pageName));
             }
+
+            if (IsApplicationRelativePath(pageName) || IsRelativePath(pageName))
+            {
+                // A path; not a name this method can handle.
+                return new RazorPageResult(pageName, Enumerable.Empty<string>());
+            }
+
+            var cacheResult = LocatePageFromViewLocations(context, pageName, isMainPage: false);
+            return new RazorPageResult(pageName, cacheResult.SearchedLocations);
         }
 
-        private ViewLocationCacheResult LocatePageFromPath(string pageName, bool isPartial)
+        /// <inheritdoc />
+        public RazorPageResult GetPage(string executingFilePath, string pagePath)
         {
-            var applicationRelativePath = pageName;
-            if (!pageName.EndsWith(ViewExtension, StringComparison.OrdinalIgnoreCase))
+            if (string.IsNullOrEmpty(pagePath))
             {
-                applicationRelativePath += ViewExtension;
+                throw new ArgumentException(nameof(pagePath));
             }
 
-            var cacheKey = new ViewLocationCacheKey(applicationRelativePath, isPartial);
+            if (!(IsApplicationRelativePath(pagePath) || IsRelativePath(pagePath)))
+            {
+                // Not a path this method can handle.
+                return new RazorPageResult(pagePath, Enumerable.Empty<string>());
+            }
+
+            var cacheResult = LocatePageFromPath(executingFilePath, pagePath, isMainPage: false);
+            return new RazorPageResult(pagePath, cacheResult.SearchedLocations);
+        }
+
+        /// <inheritdoc />
+        public ViewEngineResult FindView(ActionContext context, string viewName, bool isMainPage)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
+            if (string.IsNullOrEmpty(viewName))
+            {
+                throw new ArgumentException(nameof(viewName));
+            }
+
+            if (IsApplicationRelativePath(viewName) || IsRelativePath(viewName))
+            {
+                // A path; not a name this method can handle.
+                return ViewEngineResult.NotFound(viewName, Enumerable.Empty<string>());
+            }
+
+            var cacheResult = LocatePageFromViewLocations(context, viewName, isMainPage);
+            return CreateViewEngineResult(cacheResult, viewName);
+        }
+
+        /// <inheritdoc />
+        public ViewEngineResult GetView(string executingFilePath, string viewPath, bool isMainPage)
+        {
+            if (string.IsNullOrEmpty(viewPath))
+            {
+                throw new ArgumentException(nameof(viewPath));
+            }
+
+            if (!(IsApplicationRelativePath(viewPath) || IsRelativePath(viewPath)))
+            {
+                // Not a path this method can handle.
+                return ViewEngineResult.NotFound(viewPath, Enumerable.Empty<string>());
+            }
+
+            var cacheResult = LocatePageFromPath(executingFilePath, viewPath, isMainPage);
+            return CreateViewEngineResult(cacheResult, viewPath);
+        }
+
+        private ViewLocationCacheResult LocatePageFromPath(string executingFilePath, string pagePath, bool isMainPage)
+        {
+            var applicationRelativePath = GetAbsolutePath(executingFilePath, pagePath);
+            var cacheKey = new ViewLocationCacheKey(applicationRelativePath, isMainPage);
             ViewLocationCacheResult cacheResult;
             if (true)
             {
                 var expirationTokens = new HashSet<IChangeToken>();
-                cacheResult = CreateCacheResult(cacheKey, expirationTokens, applicationRelativePath, isPartial);
+                cacheResult = CreateCacheResult(expirationTokens, applicationRelativePath, isMainPage);
 
                 var cacheEntryOptions = new MemoryCacheEntryOptions();
                 cacheEntryOptions.SetSlidingExpiration(_cacheExpirationDuration);
@@ -287,7 +291,7 @@ namespace CodeComb.AspNet.Extensions.Template
                 // No views were found at the specified location. Create a not found result.
                 if (cacheResult == null)
                 {
-                    cacheResult = new ViewLocationCacheResult(new[] { pageName });
+                    cacheResult = new ViewLocationCacheResult(new[] { applicationRelativePath });
                 }
 
                 cacheResult = ViewLookupCache.Set<ViewLocationCacheResult>(
@@ -302,7 +306,7 @@ namespace CodeComb.AspNet.Extensions.Template
         private ViewLocationCacheResult LocatePageFromViewLocations(
             ActionContext actionContext,
             string pageName,
-            bool isPartial)
+            bool isMainPage)
         {
             var controllerName = GetNormalizedRouteValue(actionContext, ControllerKey);
             var areaName = GetNormalizedRouteValue(actionContext, AreaKey);
@@ -311,7 +315,7 @@ namespace CodeComb.AspNet.Extensions.Template
                 pageName,
                 controllerName,
                 areaName,
-                isPartial);
+                isMainPage);
             Dictionary<string, string> expanderValues = null;
 
             if (_viewLocationExpanders.Count > 0)
@@ -329,13 +333,53 @@ namespace CodeComb.AspNet.Extensions.Template
             var cacheKey = new ViewLocationCacheKey(
                 expanderContext.ViewName,
                 expanderContext.ControllerName,
-                expanderContext.ViewName,
-                expanderContext.IsPartial,
+                expanderContext.AreaName,
+                expanderContext.IsMainPage,
                 expanderValues);
 
-            ViewLocationCacheResult cacheResult = OnCacheMiss(expanderContext, cacheKey);
+            ViewLocationCacheResult cacheResult;
+            if (true)
+            {
+                cacheResult = OnCacheMiss(expanderContext, cacheKey);
+            }
 
             return cacheResult;
+        }
+
+        /// <inheritdoc />
+        public string GetAbsolutePath(string executingFilePath, string pagePath)
+        {
+            if (string.IsNullOrEmpty(pagePath))
+            {
+                // Path is not valid; no change required.
+                return pagePath;
+            }
+
+            if (IsApplicationRelativePath(pagePath))
+            {
+                // An absolute path already; no change required.
+                return pagePath;
+            }
+
+            if (!IsRelativePath(pagePath))
+            {
+                // A page name; no change required.
+                return pagePath;
+            }
+
+            // Given a relative path i.e. not yet application-relative (starting with "~/" or "/"), interpret
+            // path relative to currently-executing view, if any.
+            if (string.IsNullOrEmpty(executingFilePath))
+            {
+                // Not yet executing a view. Start in app root.
+                return "/" + pagePath;
+            }
+
+            // Get directory name (including final slash) but do not use Path.GetDirectoryName() to preserve path
+            // normalization.
+            var index = executingFilePath.LastIndexOf('/');
+            Debug.Assert(index >= 0);
+            return executingFilePath.Substring(0, index + 1) + pagePath;
         }
 
         private ViewLocationCacheResult OnCacheMiss(
@@ -355,9 +399,9 @@ namespace CodeComb.AspNet.Extensions.Template
             ViewLocationCacheResult cacheResult = null;
             var searchedLocations = new List<string>();
             var expirationTokens = new HashSet<IChangeToken>();
-            var template = expanderContext.ActionContext.HttpContext.RequestServices.GetService<Template>();
             foreach (var location in viewLocations)
             {
+                var template = expanderContext.ActionContext.HttpContext.RequestServices.GetService<Template>();
                 var path = string.Format(
                     CultureInfo.InvariantCulture,
                     location,
@@ -366,7 +410,7 @@ namespace CodeComb.AspNet.Extensions.Template
                     template.Current.Identifier,
                     expanderContext.AreaName);
 
-                cacheResult = CreateCacheResult(cacheKey, expirationTokens, path, expanderContext.IsPartial);
+                cacheResult = CreateCacheResult(expirationTokens, path, expanderContext.IsMainPage);
                 if (cacheResult != null)
                 {
                     break;
@@ -392,10 +436,9 @@ namespace CodeComb.AspNet.Extensions.Template
         }
 
         private ViewLocationCacheResult CreateCacheResult(
-            ViewLocationCacheKey cacheKey,
             HashSet<IChangeToken> expirationTokens,
             string relativePath,
-            bool isPartial)
+            bool isMainPage)
         {
             var factoryResult = _pageFactory.CreateFactory(relativePath);
             if (factoryResult.ExpirationTokens != null)
@@ -408,10 +451,10 @@ namespace CodeComb.AspNet.Extensions.Template
 
             if (factoryResult.Success)
             {
-                // Don't need to lookup _ViewStarts for partials.
-                var viewStartPages = isPartial ?
-                    EmptyViewStartLocationCacheItems :
-                    GetViewStartPages(relativePath, expirationTokens);
+                // Only need to lookup _ViewStarts for the main page.
+                var viewStartPages = isMainPage ?
+                    GetViewStartPages(relativePath, expirationTokens) :
+                    EmptyViewStartLocationCacheItems;
 
                 return new ViewLocationCacheResult(
                     new ViewLocationCacheItem(factoryResult.RazorPageFactory, relativePath),
@@ -449,10 +492,7 @@ namespace CodeComb.AspNet.Extensions.Template
             return viewStartPages;
         }
 
-        private ViewEngineResult CreateViewEngineResult(
-            ViewLocationCacheResult result,
-            string viewName,
-            bool isPartial)
+        private ViewEngineResult CreateViewEngineResult(ViewLocationCacheResult result, string viewName)
         {
             if (!result.Success)
             {
@@ -460,20 +500,15 @@ namespace CodeComb.AspNet.Extensions.Template
             }
 
             var page = result.ViewEntry.PageFactory();
+
             var viewStarts = new IRazorPage[result.ViewStartEntries.Count];
             for (var i = 0; i < viewStarts.Length; i++)
             {
                 var viewStartItem = result.ViewStartEntries[i];
-                viewStarts[i] = result.ViewStartEntries[i].PageFactory();
+                viewStarts[i] = viewStartItem.PageFactory();
             }
 
-            var view = new RazorView(
-                this,
-                _pageActivator,
-                viewStarts,
-                page,
-                _htmlEncoder,
-                isPartial);
+            var view = new RazorView(this, _pageActivator, viewStarts, page, _htmlEncoder);
             return ViewEngineResult.Found(viewName, view);
         }
 
@@ -481,6 +516,14 @@ namespace CodeComb.AspNet.Extensions.Template
         {
             Debug.Assert(!string.IsNullOrEmpty(name));
             return name[0] == '~' || name[0] == '/';
+        }
+
+        private static bool IsRelativePath(string name)
+        {
+            Debug.Assert(!string.IsNullOrEmpty(name));
+
+            // Though ./ViewName looks like a relative path, framework searches for that view using view locations.
+            return name.EndsWith(ViewExtension, StringComparison.OrdinalIgnoreCase);
         }
     }
 }
