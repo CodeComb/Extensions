@@ -209,7 +209,15 @@ namespace CodeComb.AspNet.Extensions.Template
             }
 
             var cacheResult = LocatePageFromViewLocations(context, pageName, isMainPage: false);
-            return new RazorPageResult(pageName, cacheResult.SearchedLocations);
+            if (cacheResult.Success)
+            {
+                var razorPage = cacheResult.ViewEntry.PageFactory();
+                return new RazorPageResult(pageName, razorPage);
+            }
+            else
+            {
+                return new RazorPageResult(pageName, cacheResult.SearchedLocations);
+            }
         }
 
         /// <inheritdoc />
@@ -227,7 +235,15 @@ namespace CodeComb.AspNet.Extensions.Template
             }
 
             var cacheResult = LocatePageFromPath(executingFilePath, pagePath, isMainPage: false);
-            return new RazorPageResult(pagePath, cacheResult.SearchedLocations);
+            if (cacheResult.Success)
+            {
+                var razorPage = cacheResult.ViewEntry.PageFactory();
+                return new RazorPageResult(pagePath, razorPage);
+            }
+            else
+            {
+                return new RazorPageResult(pagePath, cacheResult.SearchedLocations);
+            }
         }
 
         /// <inheritdoc />
@@ -276,7 +292,7 @@ namespace CodeComb.AspNet.Extensions.Template
             var applicationRelativePath = GetAbsolutePath(executingFilePath, pagePath);
             var cacheKey = new ViewLocationCacheKey(applicationRelativePath, isMainPage);
             ViewLocationCacheResult cacheResult;
-            if (true)
+            if (!ViewLookupCache.TryGetValue(cacheKey, out cacheResult))
             {
                 var expirationTokens = new HashSet<IChangeToken>();
                 cacheResult = CreateCacheResult(expirationTokens, applicationRelativePath, isMainPage);
@@ -338,10 +354,7 @@ namespace CodeComb.AspNet.Extensions.Template
                 expanderValues);
 
             ViewLocationCacheResult cacheResult;
-            if (true)
-            {
-                cacheResult = OnCacheMiss(expanderContext, cacheKey);
-            }
+            cacheResult = OnCacheMiss(expanderContext, cacheKey);
 
             return cacheResult;
         }
