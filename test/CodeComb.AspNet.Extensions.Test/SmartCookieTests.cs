@@ -40,7 +40,7 @@ namespace CodeComb.AspNet.Extensions.Test
             // Arrange
             var req = new Mock<HttpRequest>();
             req.Setup(x => x.Cookies)
-                .Returns(new ReadableStringCollection(new Dictionary<string, StringValues> { }));
+                .Returns(new ReadableStringCollection(new Dictionary<string, StringValues>()));
             var httpContext = new Mock<HttpContext>();
             httpContext.Setup(x => x.Request)
                 .Returns(req.Object);
