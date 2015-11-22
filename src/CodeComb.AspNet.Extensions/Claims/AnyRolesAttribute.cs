@@ -41,7 +41,7 @@ namespace Microsoft.AspNet.Mvc
                 Requires = "Roles",
                 Hint = roles
             };
-            var services = context.HttpContext.ApplicationServices;
+            var services = context.HttpContext.RequestServices;
             context.Result = new ViewResult
             {
                 StatusCode = prompt.StatusCode,

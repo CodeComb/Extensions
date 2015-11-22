@@ -56,7 +56,7 @@ namespace Microsoft.AspNet.Mvc
                 Requires = "Claims",
                 Hint = claimTypes
             };
-            var services = context.HttpContext.ApplicationServices;
+            var services = context.HttpContext.RequestServices;
             context.Result = new ViewResult
             {
                 StatusCode = prompt.StatusCode,

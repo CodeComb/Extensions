@@ -65,7 +65,7 @@ namespace Microsoft.AspNet.Mvc
                 Requires = "ClaimsOrRoles",
                 Hint = new { Roles = roles, Claims = claimTypes }
             };
-            var services = context.HttpContext.ApplicationServices;
+            var services = context.HttpContext.RequestServices;
             context.Result = new ViewResult
             {
                 StatusCode = prompt.StatusCode,

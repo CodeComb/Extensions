@@ -11,13 +11,13 @@ namespace Microsoft.AspNet.Mvc.Rendering
     {
         public static TemplateInfo GetTemplateInfo(this IHtmlHelper self)
         {
-            var template = self.ViewContext.HttpContext.ApplicationServices.GetRequiredService<Template>();
+            var template = self.ViewContext.HttpContext.RequestServices.GetRequiredService<Template>();
             return template.Current;
         }
 
         public static string GetTemplateIdentifier(this IHtmlHelper self)
         {
-            var template = self.ViewContext.HttpContext.ApplicationServices.GetRequiredService<Template>();
+            var template = self.ViewContext.HttpContext.RequestServices.GetRequiredService<Template>();
             return template.Current.Identifier;
         }
     }

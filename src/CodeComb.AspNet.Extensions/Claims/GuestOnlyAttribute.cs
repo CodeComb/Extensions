@@ -25,7 +25,7 @@ namespace Microsoft.AspNet.Mvc
                 StatusCode = 403,
                 Details = "You must be a guest to visit this page."
             };
-            var services = context.HttpContext.ApplicationServices;
+            var services = context.HttpContext.RequestServices;
             context.Result = new ViewResult
             {
                 StatusCode = prompt.StatusCode,
