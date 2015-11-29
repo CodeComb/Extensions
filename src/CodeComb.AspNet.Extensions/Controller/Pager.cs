@@ -27,8 +27,14 @@ namespace Microsoft.AspNet.Mvc
             ret.Count = src.LongCount();
             ret.PageCount = Convert.ToInt32((src.LongCount() + PageSize - 1) / PageSize);
             ret.PageSize = PageSize;
-            ret.Start = (Page - PageSize) < 1 ? 1 : (Page - PageSize);
-            ret.End = (ret.Start + 10) > ret.PageCount ? ret.PageCount : (ret.Start + 10);
+            ret.Start =Page - 5;
+            if (ret.Start < 1)
+                ret.Start = 1;
+            ret.End = (ret.Start + 9) > ret.PageCount ? ret.PageCount : (ret.Start + 9);
+            if (ret.End - ret.Start + 1 < 10)
+                ret.Start -= 4;
+            if (ret.Start < 1)
+                ret.Start = 1;
             if (ret.End < ret.Start) ret.End = ret.Start;
             if (ret.PageCount == 0) ret.PageCount = 1;
             return ret;
@@ -45,8 +51,14 @@ namespace Microsoft.AspNet.Mvc
             ret.Count = src.LongCount();
             ret.PageCount = Convert.ToInt32((src.LongCount() + PageSize - 1) / PageSize);
             ret.PageSize = PageSize;
-            ret.Start = (Page - PageSize) < 1 ? 1 : (Page - PageSize);
-            ret.End = (ret.Start + 10) > ret.PageCount ? ret.PageCount : (ret.Start + 10);
+            ret.Start = Page - 5;
+            if (ret.Start < 1)
+                ret.Start = 1;
+            ret.End = (ret.Start + 9) > ret.PageCount ? ret.PageCount : (ret.Start + 9);
+            if (ret.End - ret.Start + 1 < 10)
+                ret.Start -= 4;
+            if (ret.Start < 1)
+                ret.Start = 1;
             if (ret.End < ret.Start) ret.End = ret.Start;
             if (ret.PageCount == 0) ret.PageCount = 1;
             src = src.Skip((Page - 1) * PageSize).Take(PageSize).ToList();

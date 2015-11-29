@@ -20,7 +20,7 @@ namespace Microsoft.AspNet.Mvc
     public abstract partial class BaseController : Controller
     {
         [NonAction]
-        public IActionResult AjaxPagedView<TModel>(
+        protected IActionResult AjaxPagedView<TModel>(
             IEnumerable<TModel> Source,
             string ContentSelector,
             int PageSize = 50,
