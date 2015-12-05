@@ -48,8 +48,7 @@ namespace CodeComb.AspNet.Extensions.Sample
 
         public async void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            loggerFactory.MinimumLevel = LogLevel.Information;
-            loggerFactory.AddConsole();
+            loggerFactory.AddConsole(minLevel: LogLevel.Warning);
             loggerFactory.AddDebug();
 
             app.UseStaticFiles();

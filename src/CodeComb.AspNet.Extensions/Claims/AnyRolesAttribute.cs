@@ -45,7 +45,7 @@ namespace Microsoft.AspNet.Mvc
             context.Result = new ViewResult
             {
                 StatusCode = prompt.StatusCode,
-                TempData = new TempDataDictionary(services.GetRequiredService<IHttpContextAccessor>(), services.GetRequiredService<ITempDataProvider>()),
+                TempData = new TempDataDictionary(services.GetRequiredService<IHttpContextAccessor>().HttpContext, services.GetRequiredService<ITempDataProvider>()),
                 ViewName = "Prompt",
                 ViewData = new ViewDataDictionary(new EmptyModelMetadataProvider(), context.ModelState) { Model = prompt }
             };
