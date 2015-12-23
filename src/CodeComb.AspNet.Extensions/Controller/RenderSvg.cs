@@ -15,12 +15,25 @@ namespace Microsoft.AspNet.Mvc
     public abstract partial class BaseController : Controller
     {
         [NonAction]
-        protected IActionResult XlsView(object Model = null, string FileName = null, string ViewPath = null)
+        protected IActionResult RenderSvg(string FileName = null, string ViewPath = null)
         {
             if (string.IsNullOrEmpty(FileName))
-                FileName = DateTime.Now.ToTimeStamp().ToString() + ".xls";
+                FileName = DateTime.Now.ToTimeStamp().ToString() + ".svg";
             Response.Headers.Add("content-disposition", new string[] { "attachment;filename=\"" + FileName + "\"" });
-            Response.ContentType = "application/x-xls";
+            Response.ContentType = "image/svg+xml";
+            if (ViewPath == null)
+                return View();
+            else
+                return View(ViewPath);
+        }
+
+        [NonAction]
+        protected IActionResult RenderSvg(object Model = null, string FileName = null, string ViewPath = null)
+        {
+            if (string.IsNullOrEmpty(FileName))
+                FileName = DateTime.Now.ToTimeStamp().ToString() + ".svg";
+            Response.Headers.Add("content-disposition", new string[] { "attachment;filename=\"" + FileName + "\"" });
+            Response.ContentType = "image/svg+xml";
             if (string.IsNullOrEmpty(ViewPath))
             {
                 if (Model == null)
