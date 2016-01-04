@@ -7,11 +7,11 @@ using System.Text.Encodings.Web;
 using Microsoft.AspNet.Mvc.Routing;
 using Microsoft.AspNet.Mvc.ViewEngines;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.OptionsModel;
 using Microsoft.Extensions.Primitives;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Razor;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace CodeComb.AspNet.Extensions.Template
 {
@@ -125,8 +125,8 @@ namespace CodeComb.AspNet.Extensions.Template
         /// <remarks>
         /// The casing of a route value in <see cref="ActionContext.RouteData"/> is determined by the client.
         /// This making constructing paths for view locations in a case sensitive file system unreliable. Using the
-        /// <see cref="Abstractions.ActionDescriptor.RouteValueDefaults"/> for attribute routes and
-        /// <see cref="Abstractions.ActionDescriptor.RouteConstraints"/> for traditional routes to get route values
+        /// <see cref="ActionDescriptor.RouteValueDefaults"/> for attribute routes and
+        /// <see cref="ActionDescriptor.RouteConstraints"/> for traditional routes to get route values
         /// produces consistently cased results.
         /// </remarks>
         public static string GetNormalizedRouteValue(ActionContext context, string key)
