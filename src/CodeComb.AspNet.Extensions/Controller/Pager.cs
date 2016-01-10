@@ -71,7 +71,7 @@ namespace Microsoft.AspNet.Mvc.Rendering
 {
     public static class PagerHtmlHelper
     {
-        public static HtmlString MakePager(this IHtmlHelper self, string PlainClass = "pager-item", string ActiveClass = "active", string OuterClass = "pager-outer", string PageNumberFormat = null, string PagerInfo = "PagerInfo")
+        public static HtmlString MakePager(this IHtmlHelper self, string PlainClass = "pager-item", string ActiveClass = "active", string OuterClass = "pager-outer", string PageNumberFormat = null, IEnumerable<string> IgnoreParam = null, string PagerInfo = "PagerInfo")
         {
             StringBuilder ret = new StringBuilder();
             if (self.ViewContext.ViewData["__Performance"] != null && Convert.ToInt32(self.ViewContext.ViewData["__Performance"]) == 1)
@@ -108,6 +108,12 @@ namespace Microsoft.AspNet.Mvc.Rendering
                     foreach (var s in q.Value)
                         str += s + ", ";
                     RouteValueTemplate[q.Key] = str.TrimEnd(' ').TrimEnd(',');
+                }
+                if (IgnoreParam != null)
+                {
+                    foreach (var x in IgnoreParam)
+                        if (RouteValueTemplate.ContainsKey(x))
+                            RouteValueTemplate.Remove(x);
                 }
                 var CurrentPage = httpContextAccessor.HttpContext.Request.Query.ContainsKey("p")
                     ? int.Parse(httpContextAccessor.HttpContext.Request.Query["p"].ToString())
