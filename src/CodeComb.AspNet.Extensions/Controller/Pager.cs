@@ -109,7 +109,11 @@ namespace Microsoft.AspNet.Mvc.Rendering
                         str += s + ", ";
                     RouteValueTemplate[q.Key] = str.TrimEnd(' ').TrimEnd(',');
                 }
-                var CurrentPage = httpContextAccessor.HttpContext.Request.Query["p"].Count > 0 ? int.Parse(httpContextAccessor.HttpContext.Request.Query["p"].ToString()) : 1;
+                var CurrentPage = httpContextAccessor.HttpContext.Request.Query.ContainsKey("p")
+                    ? int.Parse(httpContextAccessor.HttpContext.Request.Query["p"].ToString())
+                    : self.ViewContext.RouteData.Values["p"] != null
+                    ? int.Parse(self.ViewContext.RouteData.Values["p"].ToString())
+                    : 1;
                 var tmp = (PagerInfo)self.ViewData[PagerInfo];
                 ret.AppendLine("<ul class=\"" + OuterClass + "\">");
                 RouteValueTemplate["p"] = "1";
