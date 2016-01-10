@@ -22,7 +22,7 @@ namespace Microsoft.AspNet.Mvc
             int? p;
             try
             {
-                if (Request.Query["p"].Count > 0)
+                if (Request.Query.ContainsKey("p"))
                 {
                     p = int.Parse(Request.Query["p"].ToString());
                 }

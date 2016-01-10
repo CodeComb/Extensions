@@ -3,7 +3,7 @@
   "version": 2,
   "targets": {
     "DNX,Version=v4.5.1": {
-      "CodeComb.AspNet.Extensions/2.0.0-rc1-final": {
+      "CodeComb.AspNet.Extensions/2.0.0-rc1-final-2": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
@@ -2080,7 +2080,7 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x86": {
-      "CodeComb.AspNet.Extensions/2.0.0-rc1-final": {
+      "CodeComb.AspNet.Extensions/2.0.0-rc1-final-2": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
@@ -4160,7 +4160,7 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x64": {
-      "CodeComb.AspNet.Extensions/2.0.0-rc1-final": {
+      "CodeComb.AspNet.Extensions/2.0.0-rc1-final-2": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
@@ -6241,7 +6241,7 @@
     }
   },
   "libraries": {
-    "CodeComb.AspNet.Extensions/2.0.0-rc1-final": {
+    "CodeComb.AspNet.Extensions/2.0.0-rc1-final-2": {
       "type": "project",
       "path": "../../src/CodeComb.AspNet.Extensions/project.json"
     },
@@ -6251,7 +6251,7 @@
     },
     "CodeComb.TestFixture/2.0.0-rc1-final": {
       "type": "package",
-      "sha512": "S0Mvk/JxC+V1pWH0mkyWVDcAeXQDz40KF54wleaY75eGmuwSAUh5d4NbhkQ0vj8dnDArlTAhc1+uf4DCTv+Xpg==",
+      "sha512": "Gf7tzgy0BEt6AVfsZAYg/Dk307xpqL93FfZa19xehkmYYC17mNt/ioJVP8uUdBXCr5CpHnYuiwnfE2sigoPMRw==",
       "files": [
         "CodeComb.TestFixture.2.0.0-rc1-final.nupkg",
         "CodeComb.TestFixture.2.0.0-rc1-final.nupkg.sha512",
@@ -6264,7 +6264,7 @@
     },
     "CodeComb.TestFixture.Mvc/2.0.0-rc1-final": {
       "type": "package",
-      "sha512": "+DATd5JgAFa3a8u+Y+2b5SQxaea2U25rVzzFy410TGBRK9HgBDI0AA3WoVwFR4WXP10YYz9MskXLvlNxpCMXBw==",
+      "sha512": "zaKmATfNAdYzMVvqUNB/c+Z45HK/rZaM2Zr5QWU5t87i0Fqt8EtfoErlOqyFuD4AYY28kaXAwVAtuYYeyMIK7Q==",
       "files": [
         "CodeComb.TestFixture.Mvc.2.0.0-rc1-final.nupkg",
         "CodeComb.TestFixture.Mvc.2.0.0-rc1-final.nupkg.sha512",
@@ -7015,7 +7015,7 @@
     },
     "Microsoft.CodeAnalysis.Analyzers/1.0.0": {
       "type": "package",
-      "sha512": "2+V/VDgZu59Thrlp+FQH38H/SmPBegMKsG0ie1ZZyHtx7kJNEozIx/p9zs0UrolX0uyYX7Ouoj3Q3Be15lqXxA==",
+      "sha512": "E7VdmGw6xO3VHWapC+pNLZmo6yncS53UY3bmb5WZm9wliJBB1A6brgzKA4fcqiLrmJFx71r0M2zEbRDphRLUNg==",
       "files": [
         "analyzers/dotnet/cs/Microsoft.CodeAnalysis.Analyzers.dll",
         "analyzers/dotnet/cs/Microsoft.CodeAnalysis.CSharp.Analyzers.dll",
@@ -7031,7 +7031,7 @@
     },
     "Microsoft.CodeAnalysis.Common/1.1.0-rc1-20151109-01": {
       "type": "package",
-      "sha512": "gC9zpQARTjIOht1dZM5Bp0fbOKA40yh0wHBMG2psLGquche0URbfdB9i1pnCusLospEsRIrNvYl75647BcBVug==",
+      "sha512": "5eea4BzS8/ge6aVWbweZ3LxMZumN7lm1hPPjSn3iAS3yi1ozsg1aCZ+lHq2nbS/ZNT+Z3QmTcmKaQd3b4bTqeA==",
       "files": [
         "lib/net45/Microsoft.CodeAnalysis.dll",
         "lib/net45/Microsoft.CodeAnalysis.xml",
@@ -7045,7 +7045,7 @@
     },
     "Microsoft.CodeAnalysis.CSharp/1.1.0-rc1-20151109-01": {
       "type": "package",
-      "sha512": "BFhSWMMlp0xLN/ogn71ULN7N0yy/yqJf/wu63x3KjV497n+8OlyiX7ZnbaQiUeafjW5P2vLzvZH99+5s+dH3Dg==",
+      "sha512": "2u8FpEIzbjvW6kveLYDwVgrrw7rkqN123dQSMLL3aRBcNFpKL4+hJkrU5uutsVNmjrzxjQkrSKQjIw6L2yjU9w==",
       "files": [
         "lib/net45/Microsoft.CodeAnalysis.CSharp.dll",
         "lib/net45/Microsoft.CodeAnalysis.CSharp.xml",
@@ -8017,7 +8017,7 @@
     "System.Reflection.Metadata/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "RLIE4sSt2zngMLuqM6YmxBH99mTumtT4DNZE4+msfEaInUP5iCLQT+BHPl+2cjSAP1pdALyAjLB8RtCB+WGGWQ==",
+      "sha512": "a8VsRm/B0Ik1o5FumSMWmpwbG7cvIIajAYhzTTy9VB9XItByJDQHGZkQTIAdsvVJ6MI5O3uH/lb0izgQDlDIWA==",
       "files": [
         "lib/dotnet5.2/System.Reflection.Metadata.dll",
         "lib/dotnet5.2/System.Reflection.Metadata.xml",
