@@ -70,7 +70,7 @@ namespace Microsoft.AspNet.Mvc.Rendering
 {
     public static class PagerHtmlHelper
     {
-        public static HtmlString MakePager(this IHtmlHelper self, string PlainClass = "pager-item", string ActiveClass = "active", string OuterClass = "pager-outer", string PageNumberFormat = null, string PagerInfo = "PagerInfo")
+        public static HtmlString MakePager(this IHtmlHelper self, string PlainClass = "pager-item", string ActiveClass = "active", string OuterClass = "pager-outer", string PageNumberFormat = null, IEnumerable<string> IgnoreParam = null, string PagerInfo = "PagerInfo")
         {
             StringBuilder ret = new StringBuilder();
             if (self.ViewContext.ViewData["__Performance"] != null && Convert.ToInt32(self.ViewContext.ViewData["__Performance"]) == 1)
@@ -108,7 +108,17 @@ namespace Microsoft.AspNet.Mvc.Rendering
                         str += s + ", ";
                     RouteValueTemplate[q.Key] = str.TrimEnd(' ').TrimEnd(',');
                 }
-                var CurrentPage = httpContextAccessor.HttpContext.Request.Query["p"].Count > 0 ? int.Parse(httpContextAccessor.HttpContext.Request.Query["p"].ToString()) : 1;
+                if (IgnoreParam != null)
+                {
+                    foreach (var x in IgnoreParam)
+                        if (RouteValueTemplate.ContainsKey(x))
+                            RouteValueTemplate.Remove(x);
+                }
+                var CurrentPage = httpContextAccessor.HttpContext.Request.Query.ContainsKey("p")
+                    ? int.Parse(httpContextAccessor.HttpContext.Request.Query["p"].ToString())
+                    : self.ViewContext.RouteData.Values["p"] != null
+                    ? int.Parse(self.ViewContext.RouteData.Values["p"].ToString())
+                    : 1;
                 var tmp = (PagerInfo)self.ViewData[PagerInfo];
                 ret.AppendLine("<ul class=\"" + OuterClass + "\">");
                 RouteValueTemplate["p"] = "1";
